@@ -1,0 +1,5 @@
+style.property = ‘值’；
+      	property不可以是变量
+
+style[property]=‘值’；
+	property可以是变量
