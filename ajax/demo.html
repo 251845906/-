@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var request = new XMLHttpRequest();
+		// 新建xnlhttp
+		request.open('POST','example.txt',true);
+		// 发送请求   get模式   发送地址   异步同步
+		request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		// 请求头
+		request.send()
+		// 发送的数据
+		request.onreadystatechange = function(){
+			// 每当 readyState 改变时，就会触发 onreadystatechange 事件。
+			switch(request.readyState) {
+				case 0:
+					alert('请求未初始化')
+					break;
+				case 1:
+					alert('服务器连接已建立')
+					break;
+				case 2:
+					alert('请求已接收')
+					break;
+				case 3:
+					alert('请求处理中')
+					break;
+				case 4:
+					alert('请求已完成，且响应已就绪')
+					switch(request.status){
+						case 200:
+							alert('ok')
+						break;
+						case 404:
+							alert('未找到页面')
+						break;
+					}
+					break;
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

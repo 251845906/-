@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script type="text/javascript">
+		var n = 0;
+		function a(){
+			var n = 10;
+			function b(){
+				n++;
+				alert(n);
+			}
+			b();
+			return b;
+		}
+		var c = a(); //a()执行一次，弹出11，并且把返回值赋给c，此时的c为function b(){}
+		c(); //alert(n),12
+		alert(n); // 0
+	</script>
+</head>
+<body>
+
+</body>
+
+</html>

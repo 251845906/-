@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{background: #aaa;}
+		section{width: 500px;margin:20px auto;}
+		h2{padding-left: 20px;line-height: 50px;background: #6ba542;color: #fff;font-size: 20px;margin:0;}
+		div{padding-left: 20px;line-height: 50px;margin:0;background: #fff;position: relative;height: 50px;}
+		input{height: 30px;position: absolute;top: 50%;left: 20px;transform: translate(0,-50%);min-width: 300px;width: auto;display: none;}
+		span{padding-right: 50px;width: 300px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display: inline-block;}
+		a{vertical-align: top;}
+		a:active{color:#000;text-decoration: none;}
+		a:link{color:#000;text-decoration: none;}
+		a:hover{color:#000;text-decoration: none;}
+	</style>
+</head>
+<body>
+	<section>
+		<h2>分类名称</h2>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+		<div><span>这是可编辑的标题</span><input type="text" value=""><a href="javascript:;">编辑</a><br></div>
+	</section>
+</body>
+<script type="text/javascript">
+
+	const set = document.getElementsByTagName('section')[0];
+	LoopBox(set)
+	function LoopBox(parse){
+		var box = parse.getElementsByTagName('div');
+		for(var i = 0;i<box.length;i++){
+			compile(box[i])
+		}
+		function compile(listBox){
+			var  oSpan = listBox.getElementsByTagName('span')[0];
+			var  ipt = listBox.getElementsByTagName('input')[0];
+			var  compileBtn = listBox.getElementsByTagName('a')[0];
+			var  star = true;
+			var  thisSpan;
+			compileBtn.addEventListener('click',function(){
+				
+				star? editSuccess():editFailure()
+
+				function editSuccess(){
+					thisSpan = oSpan.innerHTML;
+					oSpan.innerHTML = '';
+					compileBtn.innerHTML = '完成';
+					ipt.style.display = 'block';
+					ipt.focus()
+					star = false;
+				}
+				function editFailure(){
+					if(ipt.value!= ''){
+						oSpan.innerHTML = ipt.value;
+						ipt.style.display = 'none';
+						compileBtn.innerHTML = '编辑';
+						star = true;
+					}else{
+						alert('不能为空')
+					}
+				}
+				
+			})
+		}
+	}
+</script>
+</html>

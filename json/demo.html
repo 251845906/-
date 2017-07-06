@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<select>
+
+</select>
+</body>
+<script type="text/javascript">
+	var Txt = '{"a":"1","b":"5","c":"5","d":"6"}';
+	var arr1 = JSON.parse(Txt);
+	console.log(arr1)
+	//	Object {a: "1", b: "5", c: "5", d: "6"}
+	//	parse转换的必须是正宗json值   如上
+	var txt = {"a":"1","b":"5","c":"5","d":"6"};
+	var arr = JSON.stringify(txt);
+	console.log(arr)
+	//	{"a":"1","b":"5","c":"5","d":"6"}
+	//	stringify可以正常转对象
+	var ttt = {a:"1",b:"5",c:"5",d:"6"}
+	var arr2 = Object.keys(ttt)
+	console.log(ttt)
+	//	["a", "b", "c", "d"]
+	//	Object.keys吧对象值都拿出来
+</script>
+</html>

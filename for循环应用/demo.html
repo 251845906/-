@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{background: blue;width: 50px;height: 50px;position: absolute;text-align: center;line-height: 50px;color:#fff;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementsByTagName('div');
+			var Box = '';
+			for(var i=0;i<5;i++){
+				Box+= '<div>'+i+'</div>'; 
+			}
+			document.body.innerHTML = Box;
+			for(var i = 0;i<oDiv.length;i++){
+				var num = parseInt(oDiv.length/2);
+				i<=num? fn1():fn2()
+				function fn1(){
+					// oDiv[i].style.left = i*50+'px'; 
+					// oDiv[i].style.top = i*50+'px';
+					// 、、、、、、、、、、、、、、、、、、、、、、
+					// oDiv[i].style.left = i*50+'px';
+					// oDiv[i].style.top = i*50+'px';
+					//////////////////////////////////////////
+					// oDiv[i].style.left = i*50+'px';
+					// oDiv[i].style.top = i*50+'px';
+					// 、、、、、、、、、、、、、、、、、、、、
+					// oDiv[i].style.top = i*50+'px';
+					// oDiv[i].style.left = (num-i)*50+'px';
+				};
+				function fn2(){
+					// oDiv[i].style.left = i*50+'px';
+					// oDiv[i].style.top = (2*num-i)*50+'px';
+					// 、、、、、、、、、、、、、、、、、、、、、、
+					// oDiv[i].style.top = i*50+'px';
+					// oDiv[i].style.left = (2*num-i)*50+'px';
+					///////////////////////////////////////////////////////
+					// oDiv[i].style.top = i*50+'px';
+					// oDiv[i].style.left = (2*num-i)*50+'px';
+					// 、、、、、、、、、、、、、、、、、、
+					// oDiv[i].style.top = i*50+'px';
+					// oDiv[i].style.left = (i-num)*50+'px';
+				};
+
+			}
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>

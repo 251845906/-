@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*p{font-size: 14px;}*/
+	</style>
+	<script>
+		window.onload = function(){
+			var text = document.getElementsByTagName('p')[0];
+			var btn = document.getElementsByTagName('button');
+			btn[0].onclick = function(){
+				var font_size =window.getComputedStyle(text,null)['fontSize']||text.currentStyle['fontSize'];
+				font_size = parseInt(font_size);
+				font_size--;
+				text.style.fontSize = font_size + 'px';
+			}
+			btn[1].onclick = function(){
+				var font_size =window.getComputedStyle(text,null)['fontSize']||text.currentStyle['fontSize'];
+				font_size = parseInt(font_size);
+				font_size++;
+				text.style.fontSize = font_size + 'px';
+			}
+			btn[2].onclick = function(){
+				text.style.color = 'red';
+			}
+			btn[3].onclick = function(){
+				text.style.color = 'blue';
+			}
+		}
+	</script>
+</head>
+<body>
+<button>-</button><button>+</button>
+<button>red</button><button>blue</button>
+	<p>黑童话,黑童话,往往颠覆了传统童话中的单纯,美好,如《丑小鸭》中丑小鸭最后变成了烤鸭,《美人鱼》中美人鱼其实是一条鲨鱼.它绝不是孩子的枕边书,更像是成年人的读物,或许也只有成年人才能读懂其中的世间沧桑,黑童话在这些小故事里充斥着各种控诉,或现实或荒谬,或赤裸或含蓄.</p>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+	<style type="text/css">
+		.main{width: 800px;margin:50px auto;}
+		.table a{display: inline-block;font-size: 22px;background: #f75a08;color:#fff;width:160px;height: 40px;line-height: 40px;text-align: center;border-radius: 10px 10px 0 0;margin-right:30px;}
+		.table a:hover{background: #666;}
+		.list_box{border:2px solid #f75a08;}
+		.list_box .list{margin: 15px;}
+		.list_box .list:hover{background: #d8d8d8;}
+		.list .img_box{width: 240px;float: left;margin-right:30px;}
+		.list .text-box h2{font-size: 36px;line-height: 80px;}
+		.list .text-box p{font-size: 24px;}
+
+		.list_box .list1{margin: 15px;}
+		.list_box .list1:hover{background: #d8d8d8;}
+		.list1 .img_box{width: 140px;float: left;margin-right:10px;border-radius: 10px;}
+		.list1 .text-box h2{font-size: 24px;line-height: 50px;}
+		.list1 .text-box p{font-size: 18px;}
+
+		.list_box .list2{margin: 8px;border-bottom:1px dashed #f75a08;}
+		.list_box .list2:hover{background: #d8d8d8;}
+		.list2 .img_box{display: none;}
+		.list2 .text-box h2{display: none;}
+		.list2 .text-box p{font-size: 14px;line-height: 30px;}
+
+	</style>
+	<script>
+		window.onload = function(){
+			var Table_btn = document.getElementsByTagName('a'); 
+			var List_box = document.getElementById('list-box');
+			var addCLass = ['list','list1','list2'];
+			var list = List_box.childNodes;
+				
+			for(var a = 0;a<list.length;a++){
+				// console.log(list[a].nodeType)
+				if(list[a].nodeName=='#text'){
+					List_box.removeChild(list[a])
+				}
+			}
+			console.log(list.length)
+			for(var i = 0;i<Table_btn.length;i++){
+				Table_btn[i].index = i;
+				Table_btn[i].onclick = function(){
+					for(var i = 0;i<list.length;i++){
+						list[i].className = '';
+						list[i].className = addCLass[this.index]+' '+ 'clearfix';
+					}
+				}
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div class="main">
+		<div class="table">
+			<a href="javascript:;">大图展示</a>
+			<a href="javascript:;">小图展示</a>
+			<a href="javascript:;">列表显示</a>
+		</div>
+		<div class="list_box" id="list-box">
+			<div class="list2 clearfix">
+				<div class="img_box"><img src="1.jpg"></div>
+				<div class="text-box">
+					<h2>这是标题这是标题</h2>
+					<p>这是介绍介绍介绍这是介绍介绍介绍</p>
+				</div>
+			</div>
+			<div class="list2 clearfix">
+				<div class="img_box"><img src="2.jpg"></div>
+				<div class="text-box">
+					<h2>这是标题这是标题</h2>
+					<p>这是介绍介绍介绍这是介绍介绍介绍</p>
+				</div>
+			</div>
+			<div class="list2 clearfix">
+				<div class="img_box"><img src="3.jpg"></div>
+				<div class="text-box">
+					<h2>这是标题这是标题</h2>
+					<p>这是介绍介绍介绍这是介绍介绍介绍</p>
+				</div>
+			</div>
+			<div class="list2 clearfix">
+				<div class="img_box"><img src="4.jpg"></div>
+				<div class="text-box">
+					<h2>这是标题这是标题</h2>
+					<p>这是介绍介绍介绍这是介绍介绍介绍</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

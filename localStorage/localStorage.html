@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="javascript:;">66666</a>
+	<p></p>
+	<span></span>
+</body>
+<script type="text/javascript">
+
+// localStorage 对象存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
+
+
+// window.localStorage.setItem(name, val);
+// 设置缓存
+// window.localStorage.name = val
+// 设置缓存
+
+
+// window.localStorage.getItem(name);
+// 读取缓存
+// window.localStorage.name
+// 读取缓存
+
+// localStorage.clear();
+// 清除全部缓存
+
+// delete window.localStorage.name;
+// 删除缓存
+// localStorage.removeItem('name');
+// 删除选中缓存
+
+// 判断当前浏览器是否支持storage
+if(window.localStorage){
+	localStorage.setItem('sheme',document.getElementsByTagName('a')[0].innerHTML)
+	// 储存到缓存
+	localStorage.removeItem('sheme')
+	document.getElementsByTagName('p')[0].innerHTML = localStorage.sheme;
+	// 读取缓存填充到p里面
+	
+}else{
+	alert('不支持缓存')
+}
+
+// sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
+if(window.sessionStorage){
+	sessionStorage.setItem('aaa','session')
+	// 储存到缓存
+	console.log(sessionStorage)
+	document.getElementsByTagName('p')[0].innerHTML = sessionStorage.getItem('aaa');
+	// 读取缓存填充到p里面
+	
+}else{
+	alert('不支持缓存')
+}
+// sessionStorage和localStorage可以通用
+
+</script>
+</html>

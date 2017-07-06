@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+	<style>
+		ul,h2{padding: 0;margin:0;}
+		li{list-style:none;font-size: 18px;}
+		h2{font-size: 20px;}
+		#list-box{width: 100px;margin:0 auto;}
+		.list li{border:1px solid #000;}
+		.list ul{display: none}
+		.list ul li.active{background: #894654}
+		
+		h2{border:1px solid #000;background: #8ee2fa;}
+		.list h2.active{background: #882461}
+	</style>
+	<script type="text/javascript">
+		window.onload = function (){
+			var listBox = document.getElementById('list-box');
+			var oUl = listBox.getElementsByTagName('ul');
+			var oH2 = listBox.getElementsByTagName('h2');
+			var arrLi = [];
+
+			for(var i = 0;i<oH2.length;i++){
+				oH2[i].index = i;
+				oH2[i].addEventListener('click',function(){
+					console.log(this.index)
+					if(this.className =='active'){
+						this.className = '';
+						oUl[this.index].style.display = 'none';  
+					}else{
+						this.className = 'active';
+						oUl[this.index].style.display = 'block';  
+					}
+				})
+			}
+			for(var i = 0;i<oUl.length;i++){
+				var oLi = oUl[i].getElementsByTagName('li');
+				for(var x = 0;x<oLi.length;x++){
+					arrLi.push(oLi[x])
+				}
+			}
+			for(var i = 0;i<arrLi.length;i++){
+
+				arrLi[i].onclick = function(){
+					for(var i = 0;i<arrLi.length;i++){
+						arrLi[i].className = '';
+					}
+					this.className = 'active';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="list-box">
+		<li class="list">
+			<h2>我的好友</h2>
+			<ul>
+				<li>4444</li>
+				<li>8888</li>
+				<li>4444</li>
+				<li>8888</li>
+				<li>4444</li>
+				<li>8888</li>
+			</ul>
+		</li>
+		<li class="list">
+			<h2>我的陌生人</h2>
+			<ul>
+				<li>4444</li>
+				<li>8888</li>
+				<li>4444</li>
+				<li>8888</li>
+				<li>4444</li>
+				<li>8888</li>
+				<li>4444</li>
+				<li>8888</li>
+			</ul>
+		</li>
+		<li class="list">
+			<h2>我的黑名单</h2>
+			<ul>
+				<li>4444</li>
+				<li>8888</li>
+				<li>4444</li>
+				<li>8888</li>
+				<li>4444</li>
+				<li>8888</li>
+				<li>4444</li>
+				<li>8888</li>
+			</ul>
+		</li>
+	</ul id="list-box">
+</body>
+</html>

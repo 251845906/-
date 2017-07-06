@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{background: #333;}
+		figure{width:500px;margin:50px auto;position: relative;height: 334px;background:#fff url(load.gif) no-repeat center center;}
+		img{width: 100%;height: 100%;}
+		span{position: absolute;top: 0;left: 0;width: 500px;height: 50px;line-height: 50px;text-align: center;background: rgba(0,0,0,.5);color: #fff}
+		p{position: absolute;bottom: 0;left: 0;width: 500px;height: 50px;line-height: 50px;text-align: center;background: rgba(0,0,0,.5);color: #fff;margin-bottom: 0;}
+		ul{position: absolute;right:-60px;top: 0;margin:0;padding:0;}
+		li{width: 50px;height:32px;list-style:none;background: #000;margin-bottom: 10px;cursor:pointer;}
+		li.active{width: 50px;height:32px;list-style:none;background: blue;margin-bottom: 10px;cursor:pointer;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var arrUrl = ['2.jpg','3.jpg','4.jpg','5.jpg'],
+			arrText =['图片1','图片2','图片3','图片4'],
+			figure = document.getElementsByTagName('figure')[0],
+			Ospan = document.getElementsByTagName('span')[0],
+			OUl = document.getElementsByTagName('ul')[0],
+			Op = document.getElementsByTagName('p')[0],
+			oImg = document.getElementsByTagName('img')[0],
+			oLi = OUl.getElementsByTagName('li'),
+			num = 0;
+			for(var i = 0;i<arrUrl.length;i++){
+				OUl.innerHTML += '<li></li>'
+			}
+			toggle()
+			for(var i = 0;i<oLi.length;i++){
+				oLi[i].index = i;
+				oLi[i].addEventListener('click',function(){
+					num = this.index;
+					toggle()
+				})
+			}
+			function toggle(){
+				for(var x = 0;x<oLi.length;x++){
+					oLi[x].className = '';
+				}
+				oImg.src = arrUrl[num];
+				Op.innerHTML = arrText[num];
+				oLi[num].className = 'active';
+				Ospan.innerHTML = (num+1) + '/'+arrUrl.length;
+			}
+		}
+	</script>
+</head>
+<body>
+	<figure>
+		<span>正在加载...</span>
+		<img src="" alt="">
+		<p >正在加载...</p>
+		<ul ></ul>
+	</figure>
+</body>
+<script type="text/javascript">
+	
+</script>
+</html>

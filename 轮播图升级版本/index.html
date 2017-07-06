@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+	<style type="text/css">
+		img{width: 100%;}
+		.main{width: 500px;margin: 0 auto;}
+		p{text-align: center;}
+		h3{text-align: center;}
+		button{margin-left: 95px;width: 100px;height: 50px;border:none;background: #6a5c5c;font-size: 16px;color: #fff;}
+		button:active{opacity: .5;}
+		.box{position: relative;height: 333px;overflow: hidden;}
+		.box p{position: absolute;width: 100%;top:0;left:0;background: rgba(0,0,0,.5);font-size:24px;color: #fff;line-height: 50px;z-index: 2;}
+		
+		.box a{}
+		#last_btn{position: absolute;width: 50px;height:50px;background:rgba(0,0,0,.5);font-size:40px;color: #fff;line-height: 50px;text-align: center;transform: translate(0,-50%);background:rgba(0,0,0,.6);top: 50%;left:30px;}
+		#next_btn{position: absolute;width: 50px;height:50px;background:rgba(0,0,0,.5);font-size:40px;color: #fff;line-height: 50px;text-align: center;transform: translate(0,-50%);background:rgba(0,0,0,.6);top: 50%;right:30px;}
+		img{width: 100%}
+		ul{height: 100%;width: 2000px;position: absolute;top: 0;left: 0;}
+		ul li{float: left;width: 500px;}
+		.banner-menu{position: absolute;left: 50%;bottom:10px;transform: translate(-50%,0);}
+		.banner-menu div{display:inline-block;background: #fff;width: 10px;height: 10px;border-radius: 10px;margin-right: 20px;position: relative;}
+		.banner-menu div:last-child{margin-right: 0;}
+		.banner-menu div a{display: block;width: 100px;height: 60px;background: #fff;position: absolute;top:-70px;transform: translate(-40%,0);display: none;}
+		.banner-menu div a img{width: 90%;height: 80%;margin:5% 5%;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var Img_box = document.getElementById('img_box');
+			var oBox = document.getElementById('box');
+			var last_btn = document.getElementById('last_btn');
+			var next_btn = document.getElementById('next_btn');
+			var oImg = Img_box.childNodes;
+			var num = 0;
+			var ImgBox_left = 0;
+			var timer;
+			var last_num;
+			var admiate_timer;
+			for(var i= 0;i<oImg.length;i++){
+				if(oImg[i].nodeName == '#text'&&/\s/.test(oImg[i].nodeValue)){
+					Img_box.removeChild(oImg[i])
+				}
+			}
+			timer = setInterval(function(){
+				animate(500)
+			},3000);
+
+			oBox.onmouseover = function(){clearInterval(timer);}
+
+			oBox.onmouseout = function(){timer = setInterval(function(){
+				animate(500)
+			},3000);}
+
+			// last_btn.onclick = function(){
+			// 	var last_num = num;
+			// 	last_num>=oImg.length? last_num = 0:console.log(last_num)
+			// 	// 变化后数值
+			// 	num--;
+			// 	if(num<=oImg.length){
+			// 		num = oImg.length-1;
+			// 		Img_box.style.left = -(oImg.length-1)*500
+			// 	}
+			// 	var preoperation = -last_num*PX;
+			// 	// 获取运动前的的left值
+			// 	admiate_timer = setInterval(function(){
+			// 		// left值开始运行
+			// 		preoperation--;
+			// 		// 获取当前box的left值
+			// 		var ImgBox_left = Img_box.style.left;
+			// 		var ImgBox_left = ImgBox_left.substr(0,ImgBox_left.indexOf('px'))
+			// 		console.log(ImgBox_left)
+			// 		console.log(-num*PX)
+			// 		// 判断运行的当前值与期望的值是否相等
+			// 		ImgBox_left==-num*PX? clearInterval(admiate_timer):Img_box.style.left = preoperation+'px';
+			// 	})
+			// }
+			next_btn.onclick = function(){
+				animate(500)
+			}
+			function animate(PX){
+				last_num = num;
+				last_num>=oImg.length? last_num = 0:console.log(last_num)
+				// 变化后数值
+				num++;
+				if(num>=oImg.length){
+					num = 0;
+					Img_box.style.left = '0px'
+				}
+				var preoperation = -last_num*PX;
+				// 获取运动前的的left值
+				// var star = false;
+				// 设定一个开关
+				admiate_timer = setInterval(function(){
+					// left值开始运行
+					preoperation--;
+					// 获取当前box的left值
+					var ImgBox_left = Img_box.style.left;
+					var ImgBox_left = ImgBox_left.substr(0,ImgBox_left.indexOf('px'))
+					console.log(ImgBox_left)
+					console.log(-num*PX)
+					// 判断运行的当前值与期望的值是否相等
+					ImgBox_left==-num*PX? clearInterval(admiate_timer):Img_box.style.left = preoperation+'px';
+				})
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="main">
+		<div class="box" id="box">
+			<p>1/4</p>
+			<ul class = "clrarfix" id="img_box">
+				<li><img src="2.jpg"></li>
+				<li><img src="3.jpg"></li>
+				<li><img src="4.jpg"></li>
+				<li><img src="5.jpg"></li>
+			</ul>
+			<a href="javscript:;" id="last_btn" property="last"><</a>
+			<a href="javscript:;" id="next_btn" property="next">></a>
+			<div class="banner-menu">
+				<div>
+					<a href="javascript:;"><img src="2.jpg"></a>
+				</div>
+				<div>
+					<a href="javascript:;"><img src="3.jpg"></a>
+				</div>
+				<div>
+					<a href="javascript:;"><img src="4.jpg"></a>
+				</div>
+				<div>
+					<a href="javascript:;"><img src="5.jpg"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

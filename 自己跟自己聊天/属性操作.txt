@@ -1,0 +1,6 @@
+value 可直接获取  
+
+src  
+img.src  获取的是图片地址   
+
+getAttribute('src')  获取的是src的值

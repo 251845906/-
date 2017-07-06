@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+</head>
+<style>
+	section{width: 268px;background: #dee7e7;margin: 20px auto;padding:6px;}
+	li div{display: none;}
+	.title h2{display: inline-block;font-size: 18px;line-height: 37px;font-family: '宋体';color: #103142;text-indent: 10px;padding-right:40px;border-bottom:1px solid #94bdd6;}
+	.title a{display: inline-block;width:37px;height:24px;font-size: 12px;line-height: 24px;font-family: '宋体';color: #000;text-align: center;border:1px solid #94bdd6;vertical-align: bottom;}
+	.title a:nth-child(3){border-left: none;border-right: none;}
+	.title a.active{border-bottom:none;padding-bottom:1px;background: #fff;}
+	li{border-bottom:1px dashed #fff;}
+	li p{line-height: 28px;display: inline-block;}
+	li span{display: inline-block;width: 17px;height: 13px;background: #29739c;color: #fff;text-align: center;margin:8px 10px;}
+	li.active{background: #fff;}
+	.active div{display: inline-block;vertical-align: top;}
+	.active a{display: inline-block;width: 85px;height: 65px;margin:8px 10px;border:1px solid #dee7e7;padding:2px;}
+	.active button{background: #29739c;color: #fff;border:none;width: 40px;height: 20px;line-height: 20px;vertical-align: top;margin-top:20px;margin-left:60px;}
+	.active p{display: none;}
+	ul{display: none;}
+	ul.selected{display: block}
+
+</style>
+<body>
+	<section>
+		<div class="title" id="title">
+			<h2>观看排行榜</h2><a href="javascript:;" class="active">每日</a><a href="javascript:;" >每周</a><a href="javascript:;">全部</a>
+		</div>
+		<ul class="selected">
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+		</ul>
+		<ul>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+		</ul>
+		<ul>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+			<li><span>1</span><p>这是信息这是信息</p><div><a href="javascript:;"><img src="2.jpg" alt="新闻"></a><button>播放</button></li>
+		</ul>
+	</section>
+</body>
+<script type="text/javascript">
+	const Box = document.getElementsByTagName('section')[0];
+	var aUl = Box.getElementsByTagName('ul');
+	const title = document.getElementById('title');
+	var aBtn = title.getElementsByTagName('a');
+	var thisUl = aUl[0];
+	for(var i= 0; i<aBtn.length;i++){
+		var thisindex = 0;
+		var lastBtn = aBtn[0];
+		aBtn[i].index = i;
+		aBtn[i].addEventListener('click',function (){
+			if(this.index!=thisindex){
+
+				this.className = 'active';
+				lastBtn.className = '';
+				lastBtn = this;
+
+				aUl[this.index].className = 'selected';
+				thisUl.className = '';
+				thisUl = aUl[this.index];
+				thisindex = this.index;
+			}
+			writeIn(this)
+		})
+		writeIn(aUl[i]);
+	}
+	function writeIn(ul){
+		var	oLi = ul.getElementsByTagName('li');
+		for(var i = 0;i<oLi.length;i++){
+			oLi[i].index = [i];
+			var oSpan = oLi[i].getElementsByTagName('span')[0],
+				oP    = oLi[i].getElementsByTagName('p')[0],
+			  	lastoLI;
+				oSpan.innerHTML = i + 1;
+				oP.innerHTML = oP.innerHTML + i;
+			oLi[i].addEventListener('mouseover',function(){
+				if(lastoLI == undefined){
+					this.className = 'active';
+					lastoLI = this;
+				}else{
+					lastoLI.className = '';
+					this.className = 'active';
+					lastoLI = this;
+				}
+			})
+		}
+	}
+</script>
+</html>

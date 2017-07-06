@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+window.onload = function(){
+	const arr = ['100px','abc'-6,[],-98765,34,-2,0,'300',function(){alert(1)},null,document,[],true,'200px'-30,'23.45元',5,Number('abc'),function(){alert(3)}];
+	function num(arr){
+		var rus = [];
+		for(var i = 0;i<arr.length;i++){
+			if(arr[i]+0 === arr[i]){
+				// 利用隐形转化如果是数字的话+0是不变得
+				rus.push(arr[i]);
+			}
+		}
+
+		return rus
+	}
+	function toNum(arr){
+		var rus = [];
+		for(var i = 0;i<arr.length;i++){
+			if(parseFloat(arr[i])+0 === parseFloat(arr[i])){
+				// 利用parseFolat将带汉字的字符串也转为数字带浮点的不舍弃浮点
+				rus.push(arr[i]);
+			}
+		}
+		return rus
+	}
+	function maxNum(arr){
+		var rus = [];
+		for(var i = 0;i<toNum(arr).length;i++){
+			rus.push(parseFloat(toNum(arr)[i]))
+			// 将上面得到的数字转换后扔进rus里
+		}
+		return Math.max(...rus)
+		// 用Math.max获取最大值...为扩展符号.max()无法辨别数组
+	}
+	function indexNaN(arr){
+		var rus = [];
+		for(var i = 0;i<arr.length;i++){
+			if( typeof(arr[i]) === 'number'&& Number(arr[i]) !== Number(arr[i]) ){
+				// NaN的特性是number又和自身不相等
+				console.log(i)
+				rus.push(i)
+			}
+		}
+
+		return rus
+	}
+	document.body.innerHTML += '<p>所有数字'+num(arr)+'</p>';
+	document.body.innerHTML += '<p>可以转成数字'+toNum(arr)+'</p>';
+	document.body.innerHTML += '<p>最大数字'+maxNum(arr)+'</p>';
+	document.body.innerHTML += '<p>isNaN的数字'+indexNaN(arr)+'</p>';
+	
+}
+</script>
+<body>
+	
+</body>
+</html>

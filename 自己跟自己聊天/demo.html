@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+	<style>
+		.main{width:822px;height: 590px;margin:50px auto;background: #f7f6f6;border-radius: 10px;border:1px solid #e4d6cf;overflow: hidden;box-shadow: 0px 0px 10px #999 ;}
+		.header{height: 62px;padding:10px;background: #f4ebe3;border-bottom:1px solid #d8d8d8;}
+		.header p{font-size:18px;line-height: 30px;padding-left: 10px;}
+		.header p:nth-child(2){font-size:12px;}
+		.content{width: 100%;}
+		.content_left{width: 634px;padding:16px;border:1px solid #d8d8d8;border-top:none;border-left:none;border-top:none;background: #fff;height: 346px;overflow-y:auto}
+		.content_left div{margin-bottom: 10px;}
+		.content_left p{display: block;font-size: 18px;color: #000;}
+		.content_left p span{display: inline-block;width: 40px;height: 40px;margin:0 10px;}
+		.content_left p em{display: inline-block;line-height: 40px;vertical-align: top;border:1px solid #d8d8d8;padding: 0 20px;border-radius: 10px;background: #fff;}
+		.footer{width: 666px;height: 126px;}
+		.footer button{width: 92px;float: right;margin-top:4px;height: 28px;background: url(images/4.jpg) no-repeat;border:none;}
+		.footer button:active{opacity:.8;}
+		textarea{width: 654px;border:none;height: 78px;border-bottom:1px solid #d8d8d8;border-right:1px solid #d8d8d8;padding:6px;line-height: 18px;}
+		.content_right{width: 155px;}
+		.content_right a{display: block;width: 100px;height: 100px;margin:28px;}
+		.content_right button{display: block;width: 60px;height: 30px;line-height: 30px;margin:0px auto;border:none;background: #333;color: #fff;border-radius: 5px;font-size: 14px;}
+		.content_right button:active{opacity:.8;}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+	window.onload = function(){
+		var switch_btn = document.getElementById('switch_btn');	
+		var name_text = document.getElementById('name_text');
+		var name_img = document.getElementById('name_img');
+		var export_btn = document.getElementById('export_btn');
+		var textarea = document.getElementsByTagName('textarea')[0];
+		var content_left = document.getElementsByClassName('content_left')[0];
+		var child_img = name_img.childNodes;
+		var img_src;
+		for(var i = 0;i<child_img.length;i++){
+			if(child_img[i].nodeName == 'IMG'){
+				img_src = child_img[i];
+				break;
+			}
+		}
+		switch_btn.addEventListener('click',function(){
+			var account = name_text.getAttribute('name');
+			account!=='小北方'?  swit('小北方','images/5.jpg'):swit('另一个小北方','images/6.jpg');
+			function swit(name,images){
+				name_text.innerHTML = name;
+				name_text.setAttribute('name',name);
+				img_src.setAttribute('src',images);
+			};
+		});
+		export_btn.addEventListener('click',function(){
+			
+			var left_child = content_left.childNodes;
+			var array = [];
+			for(var i = 0;i<left_child.length;i++){
+				if(left_child[i].nodeType !== 1){
+					content_left.removeChild(left_child[i])
+				}
+			}
+			// left_child.length>4? content_left.removeChild(left_child[0]):console.log()
+			var account = name_text.getAttribute('name');
+			textarea.value == "" ?  console.log():_export()
+			function _export(){
+				if(account!=='小北方'){
+				 	var cont_value = content_left.innerHTML;
+					content_left.innerHTML = cont_value + '<div class="clearfix"><p class="fr"><em>'+textarea.value+'</em><span><img src="images/6.jpg"></span></p></div>';
+					textarea.value = '';
+				}else{
+					var cont_value = content_left.innerHTML;
+					content_left.innerHTML = cont_value + '<div class="clearfix"><p class="fl"><span><img src="images/5.jpg"></span><em>'+textarea.value+'</em></p></div>';
+					textarea.value = '';
+				}
+				var scrollHeight = content_left.scrollHeight;
+				var clientHeight = content_left.clientHeight;
+				scrollHeight <= clientHeight ? console.log(clientHeight):content_left.scrollTop = scrollHeight-clientHeight
+				
+			}
+		})
+	}
+</script>
+	<div class="main">
+		<div class="header clearfix">
+			<div class="username fl">
+				<p id="name_text" name="小北方">小北方</p>
+				<p>一切解释都他妈浮云，别跟我说什么理想，我的理想就是不上班还有钱花</p>
+			</div>
+			<a href="javscript:;" id="close" class="fr"><img src="images/1.jpg"></a>
+		</div>
+		<div class="content clearfix">
+			<div class="content_right fr">
+				<a href="javascript:;"  id="name_img">
+					<img src="images/5.jpg">
+				</a>
+				<button id="switch_btn">切换</button>
+			</div>
+			<div class="content_left fl">
+				
+			</div>
+			<div class="footer fl clearfix">
+				<textarea></textarea><br />
+				<button id="export_btn"></button>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
+<!-- <div class="clearfix"><p class="fl"><span><img src="images/5.jpg"></span><em>uejuisos</em></p></div>
+<div class="clearfix"><p class="fr"><em>irdisleo</em><span><img src="images/6.jpg"></span></p></div> -->

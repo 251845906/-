@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{padding: 0;margin:0;}
+		li{list-style: none;cursor: pointer;}
+		h2{padding: 0;margin:0;}
+		section{width: 500px;margin: 10px auto;background: #383838;}
+		h2{background: #558bed;line-height: 110px;height: 110px;font-size:33px;color:#fff;font-weight: normal;}
+		h2 span{display:inline-block;background: url(shrink.png) no-repeat center center;width: 35px;height: 35px;margin: 0 20px;}
+		.list li{height: 30px;line-height: 110px;height: 110px;color: #fff;text-align: center;font-size:30px;}
+		.list ul{display:none;}
+		.list li:hover{background: #4b4b4b;border-left:5px solid #000;}
+		.list li.active{background: #4b4b4b;border-left:5px solid #558bed;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var listBox = document.getElementById('list_box');
+			var oH2 = listBox.getElementsByTagName('h2');
+			var oSpan = listBox.getElementsByTagName('span');
+			var oUl = listBox.getElementsByTagName('ul');
+			var lastNum;
+			var arroLi = [];
+			var lastoLi;
+
+			for(var i = 0;i<oH2.length;i++){
+				// 为当前h2添加property属性
+				oH2[i].property = false;
+				// 为h2添加index值
+				oH2[i].index = i;
+				// 当前h2点击时
+				oH2[i].addEventListener('click',function(){
+					// 根据身上自定义值判断当前元素是否为选中状态
+					if(this.property){
+						openShrinkage(this.index,'none','url(shrink.png) no-repeat center center',false)
+					}else{	
+						openShrinkage(this.index,'block','url(unfold.png) no-repeat center center',true)
+					}
+				})
+			}
+			for(var i = 0;i<oUl.length;i++){
+				// 获取当前ul里面的li
+				var oLi = oUl[i].getElementsByTagName('li');
+				for(var x = 0;x<oLi.length;x++){
+					// 把li添加为一个数组集合
+					arroLi.push(oLi[x])
+				}
+			}
+			for(var i = 0;i<arroLi.length;i++){
+				// 给li添加index值
+				arroLi[i].index = i;
+				// 给li添加property值
+				arroLi[i].property = false;
+				arroLi[i].addEventListener('click',function(){
+					// 判断上是否把上一个元素赋值给lastoLi  没有则不执行
+					if(typeof lastoLi !== 'undefined'){
+						// 上一个元素的class清空
+						lastoLi.setAttribute('class','')
+						// 判断当前点击元素是否与上次点击元素是同一个
+						if(lastoLi.index !== this.index){
+							lastoLi.property = false;
+						}
+					};
+					// 根据身上自定义值判断当前元素是否为选中状态
+					if(this.property){
+						// 删除当前元素class
+						this.className = '';
+						// 改变当前元素自定义属性
+						this.property = false;
+					}else{
+						// 为当前元素添加class
+						this.className = 'active';
+						// 改变当前元素的属性值
+						this.property = true;
+					};
+					// 把当前元素赋值给lastoLi
+					lastoLi = this;
+				})
+			}
+			function openShrinkage(num,dis,url,bool){
+				// 判断上是否把上一个元素赋值给lasnum
+				if(typeof lastNum !== 'undefined'){
+					// 上一个元素隐藏  改变图片   属性改变
+					oUl[lastNum].style.display = 'none';、
+
+					oSpan[lastNum].style.background = 'url(shrink.png) no-repeat center center';
+					oH2[lastNum].property = false;
+				} 
+				// 当前元素出现  图片改变  属性改变
+				oUl[num].style.display = dis;
+				oSpan[num].style.background = url;
+				oH2[num].property = bool;
+				// 把当前index的值赋给last
+				lastNum = num;
+			}
+		}
+	</script>
+</head>
+<body>
+	<section>
+		<ul id="list_box">
+			<li class="list">
+				<h2><span></span>My Friends</h2>
+				<ul>
+					<li>Aaron</li>
+					<li>Bart</li>
+					<li>Cecil</li>
+				</ul>
+			</li>
+			<li class="list">
+				<h2><span></span>My blacklist</h2>
+				<ul>
+					<li class="555">Aaron</li>
+					<li>Bart</li>
+					<li>Cecil</li>
+				</ul>
+			</li>
+			<li class="list">
+				<h2><span></span>My stranger</h2>
+				<ul>
+					<li>Aaron</li>
+					<li>Bart</li>
+					<li>Cecil</li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+</body>
+</html>
