@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		input{margin-right: 20px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<p><input type="checkbox" > 什么什么什么</p>
+		<p><input type="checkbox" > 什么什么什么</p>
+		<p><input type="checkbox" > 什么什么什么</p>
+		<p><input type="checkbox" > 什么什么什么</p>
+		<p><input type="checkbox" > 什么什么什么</p>
+	</div>
+	<p><input type="checkbox" id="checkAll"> 全选</p>
+</body>
+<script type="text/javascript">
+	checkAll(document.getElementById('box'))
+	function checkAll(box){
+		var check = box.getElementsByTagName('input');
+		var checkAll =document.getElementById('checkAll');
+		for(var i = 0;i <check.length;i++){
+			check[i].addEventListener('click',function(){
+				var star = 0;
+				for(var i = 0;i <check.length;i++){
+					check[i].checked ? star++:console.log();
+				}
+				star === check.length? checkAll.checked = true:checkAll.checked = false;
+			})
+		};
+		checkAll.addEventListener('click',function(){
+			for(var i = 0;i <check.length;i++){
+				check[i].checked = this.checked;
+			}
+		})
+	}
+
+</script>
+</html>

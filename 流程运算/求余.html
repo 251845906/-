@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		li{height: 20px;width: 100%;}
+	</style>
+	<script type="text/javascript">
+ 		window.onload = function(){
+			var arr = ['red','blue','yellow','#000']
+			var oli = document.getElementsByTagName('li');
+			var ListColor = '';
+			for(var i = 0;i<oli.length;i++){
+				oli[i].index = i;
+				oli[i].style.background = arr[i%arr.length];
+				oli[i].onmousemove = function(){
+					this.style.background = 'gray';
+				};
+				oli[i].onmouseout = function(){
+					this.style.background = arr[this.index%arr.length];
+				};
+			}
+		}
+	</script>
+</head>
+<body>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>
