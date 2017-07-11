@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<input type="text" id="txt" value="btn">
+</body>
+<script type="text/javascript">
+
+//	return : 返回值
+//1）函数名+（）：fn() ==> return   后面的值
+//2) 所有函数默认返回值：未定义
+//3) return 后面代码都不执行
+
+
+	//		id 封装
+	function $(id){
+		return document.getElementById(id);
+	}
+	console.log($('txt').value);
+	function fnArr(n) {
+		var arr = [];
+		for(var i = 0 ; i<n;i++){
+			arr.push(i)
+		}
+		return arr
+	}
+	console.log(fnArr(8))
+	function fnArr1(n,m) {
+		var arr = []
+//		找出最大数字
+		var max = Math.max(n, m);
+//		找出最小数字
+		var min = Math.min(n, m);
+//		循环在数组中添加数字
+		for(var i = min ; i<max;i++){
+			arr.push(i)
+		}
+		return arr
+	}
+//	打印函数   传参的不管前后只管大小往数组添加东西
+	console.log(fnArr1(20,5),fnArr1(5,20))
+
+	function fn1() {
+
+	}
+	function fn2() {
+		return;
+	}
+//	函数里面都有return  没有写值的情况都是undefind
+	console.log(fn1()); //undefined
+	console.log(fn2()); //undefined
+</script>
+</html>

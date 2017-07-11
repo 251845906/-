@@ -5,8 +5,69 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
+	<style>
+		a{
+			vertical-align: top;
+			display: inline-block;
+			width: 20px;
+			height:22px;
+			background:url("f.jpg") no-repeat;
+			background-position: 0px 0px;
+			padding-right: 5px;
+		}
+		span{
+			color:#ef7300;
+			margin-left: 20px;
+
+		}
+		p{
+			border:1px solid red;
+			display: inline-block;
+			width: auto;
+			margin: 0 auto;
+		}
+	</style>
 </head>
 <body>
-
+	<p id="grade">总体评价：<a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a><span></span></p>
 </body>
+<script type="text/javascript">
+
+	fn(document.getElementById('grade'))
+	function fn(box){
+		var oSpan = box.getElementsByTagName('span')[0];
+		var oA = box.getElementsByTagName('a');
+		var star;
+		for(var i = 0;i<oA.length;i++){
+			oA[i].index = i;
+			oA[i].addEventListener('mouseover',function(e){
+				fn(this.index)
+			},false)
+			oA[i].addEventListener('click',function(){
+				star = this.index;
+			});
+			oA[i].addEventListener('mouseout',function(e){
+				fn(star)
+			},false)
+		}
+		function fn(num){
+			var n;
+			for(var i = 0;i<oA.length;i++){
+				oA[i].style.backgroundPosition = '0px' +' '+ '0px';
+			}
+			num > 1 ? n = 2: n = 1;
+			for(var i = 0;i<=num;i++){
+				oA[i].style.backgroundPosition = '0px' +' '+ (-22*n +'px');
+			}
+			if (num<1){
+				oSpan.innerHTML = '很差';
+			}else if (num<3){
+				oSpan.innerHTML = '一般';
+			}else{
+				oSpan.innerHTML = '很好';
+			}
+		}
+	}
+
+</script>
 </html>
