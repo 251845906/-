@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+//	arguments  用法
+//	1)、arguments 用于不知道实参的具体个数时候
+//  2)、arguments 是实参的聚合体
+//  3)、arguments 可以用数组方法使用
+
+
+
+
+
+	fn(1,2,3);   // 实参-----实际传递的参数
+
+//	function fn(a,b,c){};形参abc带表123
+
+	function fn(a,b,c){
+//		arguments------------是一个object  arguments[0]可访问实参 arguments可以用数组的方法访问
+
+		console.log(arguments,typeof arguments);    //arguments-----实参的集合体
+
+		console.log(arguments[0],arguments[1],arguments[2])  ; //123
+
+		console.log(arguments.length) ;  //3
+	}
+
+
+
+	function fn1(a,b,c,d) {
+		var num = 0;
+		for(var i = 0;i<arguments.length;i++){
+			num+=arguments[i];
+		};
+		return num;
+	};
+	console.log(fn1(1,2,3,4),fn1(1,2,3));
+	
+	
+	
+	function fn2(a,b,c,d,e) {
+		var num = 0;
+		var firstNum = arguments[0];
+		var symbol = arguments[arguments.length-1];
+		if (symbol === '+'){
+			for(var i = 1;i<arguments.length-1;i++){
+				firstNum+=arguments[i];
+			};
+			return firstNum
+		}else{
+			for(var i = 1;i<arguments.length-1;i++){
+				firstNum-=arguments[i];
+			};
+			return firstNum
+		};
+	};
+	console.log(fn2(1,2,3,'+'),fn2(10,2,3,4,'-'))
+	
+	var a = 1;
+	function fn3(a) {
+		arguments[0] = 3;
+		console.log(a);     // 3
+		var a = 2;
+		console.log(arguments[0]); // 2
+    }
+    fn(a);
+    console.log(a);     //1
+</script>
+<body>
+
+</body>
+</html>
