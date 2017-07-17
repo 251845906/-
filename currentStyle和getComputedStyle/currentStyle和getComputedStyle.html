@@ -18,14 +18,24 @@
 
 </body>
 <script>
-//    getComputedStyle()   ie8以下不支持
+//    document.getComputedStyle()[property]   ie8以下不支持
+
 //        获取页面渲染的所有样式
 //        获取的是计算机渲染后的样式
 
+//    obj.currentStyle[property]   ie8以下支持
+
+
+//兼容写法    window.getComputedStyle ?  property = window.getComputedStyle(ojg,null)[property] : property = obj.currentStyle[property];
+
+
+
+
     $('#btn').onclick = function () {
 //        获取btn的width
-        var width = getComputedStyle($('#div')).width;
+        window.getComputedStyle ?  width = window.getComputedStyle($('#div'),null).width : width = $('#div').currentStyle.width;
         console.log(width)
     }
+    css($('btn'),'width','500px')
 </script>
 </html>
