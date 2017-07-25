@@ -24,26 +24,30 @@ $(this)
         }
 
     };
-    function css(obj,property,price) {
-
-        if (arguments[2] === 'undefined'){
-            read();
-            return read;
-        }else{
-            write()
-        }
-        function read(){
-            if (window.getComputedStyle){
-                return document.getComputedStyle(obj,'null')[property];
-            }else{
-                return obj.currentStyle[property];
-            }
-        };
-        function write(){
-            property  = eval(property)
-            obj.style[property] = price;
-        }
+    function getStyle(object,property) {
+        return window.currentStyle ?
+            object.currentStyle[property]:window.getComputedStyle(object,null)[property];
     }
+    // function css(obj,property,price) {
+    //
+    //     if (arguments[2] === 'undefined'){
+    //         read();
+    //         return read;
+    //     }else{
+    //         write()
+    //     }
+    //     function read(){
+    //         if (window.getComputedStyle){
+    //             return document.getComputedStyle(obj,'null')[property];
+    //         }else{
+    //             return obj.currentStyle[property];
+    //         }
+    //     };
+    //     function write(){
+    //         property  = eval(property)
+    //         obj.style[property] = price;
+    //     }
+    // }
 
 
 

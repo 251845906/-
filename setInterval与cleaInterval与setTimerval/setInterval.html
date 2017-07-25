@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+//        定时器
+
+//        setInterval(函数，时间（毫秒） )
+    window.onload = function () {
+        var btn = document.getElementsByTagName('button')[0];
+        var box = document.getElementsByTagName('div')[0];
+        var arr = ['red','blue','#321321','black'];
+        var star = true;
+        var timer;
+        var i = 0;
+        btn.onclick = animate;
+        function animate(){
+            if (star){
+                timer = setInterval(function(){
+                    i>=arr.length ? i = 0:i++;
+                    star = false;
+                    box.style.backgroundColor = arr[i];
+                },500);
+                btn.innerHTML = '停止';
+            }else{
+                clearInterval(timer)
+                star = true;
+                btn.innerHTML = '开始';
+            }
+        }
+    }
+    </script>
+    <style>
+        div{
+            width:200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button>开始</button>
+    <div></div>
+</body>
+</html>

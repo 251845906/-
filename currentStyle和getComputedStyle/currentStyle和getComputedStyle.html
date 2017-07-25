@@ -24,6 +24,9 @@
 
 //        获取页面渲染的所有样式
 //        获取的是计算机渲染后的样式
+//        z只能获取到单一样式，复合样式获取会出现问题
+//        background ：url() ..... 会出现问题
+//        backgroundColor   可以得到结果  chrome 得到是rgb值
 
 //    obj.currentStyle[property]   ie8以下支持
 
@@ -31,12 +34,17 @@
 //兼容写法    window.getComputedStyle ?  property = window.getComputedStyle(ojg,null)[property] : property = obj.currentStyle[property];
 
 
-
+    function getStyle(object,property) {
+        return window.currentStyle ?
+         object.currentStyle[property]:window.getComputedStyle(object,null)[property];
+    }
 
     $('#btn').onclick = function () {
 //        获取btn的width
-        window.getComputedStyle ?  width = window.getComputedStyle($('#div'),null).width : width = $('#div').currentStyle.width;
-        console.log(width)
+//        window.getComputedStyle ?
+//        width = window.getComputedStyle($('#div'),null).width : width = $('#div').currentStyle.width;
+//        getStyle($('#div'),'width')
+        console.log(getStyle($('#div'),'width'))
     }
 
 </script>
