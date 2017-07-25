@@ -1,0 +1,66 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video,input {
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-size: 14px;
+    font-family:arial,"微软雅黑";
+    color: #333;
+    background-color: #fff;
+}
+li{
+    list-style: none;
+}
+a:link,a:visited{
+    color:#333;
+    text-decoration: none;
+}
+a:hover{
+    color:#2ea3fd;
+}
+img{
+    border:0;
+    vertical-align:top;
+}
+/*通用样式*/
+
+.clearfix:after{
+    content: ".";
+    display: block;
+    height:0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{
+    zoom:1;
+}
+.wrapper{
+    width:1200px;
+    margin:0 auto; 
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.bk,.bk10,.bk20,.bk30,.bk40,.bk50,.bk55{
+    height: 0px;
+    font-size: 0px;
+    overflow: hidden;
+    clear:both;
+}
+.bk10{height: 10px;}.bk20{height: 20px;}.bk30{height: 30px;}.bk40{height: 40px;}.bk50{height: 50px;}.bk55{height: 55px;}
