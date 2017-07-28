@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+//    var a = 5;
+//    fn(function (num) {
+//         a = a+num;
+//    })
+//
+//    function fn(call_back){
+//        var b = 5;
+//        call_back? call_back(5):console.log()
+//    };
+//
+//    console.log(a)
+
+//    function foo(){
+//        var a = 10;
+//        return function(){
+//            a *= 2;
+//            return a;
+//        };
+//    }
+//    var f = foo();
+////    f(); //return 20.
+////    f(); //return 40.
+//    console.log(f())
+//    console.log(f())
+
+    function fn2() {
+        var c = 5;
+        return function () {
+            c *= 5;
+            return c
+        }
+    };
+    var f = fn2();
+    console.log(fn2()())   //25
+    console.log(fn2()())    //25
+    console.log(fn2()())    //25
+    console.log(f())        //25
+    console.log(f())        //125
+    console.log(f())        //625
+//函数运行创造一个域？
+
+
+
+//      window.onload = function () {
+//          var len = 16;
+//          var str = '';
+//          var oDiv = document.getElementsByTagName('div');
+//          var timer = null;
+//          var i = 0;
+//          for (var i = 0;i<len;i++){
+//              str+="<div style = 'width:40px; height:40px; margin:5px;background:red;display: inline-block'></div>"
+//          };
+//          document.body.innerHTML += str;
+//          document.onclick = function () {
+//              var place = 'top';
+//              clearInterval(timer);
+//              timer = setInterval(function () {
+//                  domove(oDiv[i],'bottom',20,function () {place = bottom;})
+//                  i++;
+//                  i>=len ? clearInterval(timer):console.log('');
+//              },200)
+//          };
+//          function domove(dom,dir,msel,distance,call_back){
+//              var time = null;
+//              var star = true;
+//              switch(dir){
+//                  case 'bottom':
+//                      dir = 'top';
+//                      msel = -parseFloat(msel);
+//                      break
+//                  case 'right':
+//                      dir = 'left';
+//                      msel = -parseFloat(msel);
+//                      break
+//              };
+//              clearInterval(time);
+//              time = setInterval(function () {
+//                  window.getComputedStyle ? var style = document.getComputedStyle(dom,null)[dir]:var style = dom.currentStyle[dir];
+//
+//                  if (style>=msel){
+//                      clearInterval(time);
+//                      style = msel;
+//                      call_back ? call_back():console.log();
+//                  };
+//                  dom.style[msel] =
+//              },200);
+//          }
+//      }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
