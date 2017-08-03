@@ -2,10 +2,11 @@
 /**
  * Created by Administrator on 2017/7/11 0011.
  */
-$(function(){})
-$('#id')
-$('.aa')
-$(this)
+// $(function(){})
+// $('#id')
+// $('.aa')
+// $(this)
+//     封装$符号
     function $(v){
         if (typeof v === 'function'){
             window.onload = v
@@ -22,7 +23,6 @@ $(this)
         }else if(typeof v === 'object'){
             return v
         }
-
     };
     function getStyle(object,property) {
         return window.currentStyle ?
