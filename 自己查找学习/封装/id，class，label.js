@@ -8,9 +8,10 @@ function cls(oParent,sClass){
     var aResult = [];
     var aEle = oParent.getElementsByTagName('*');
     for(var i=0; i<aEle.length;i++){
-        if(aEle[i].className == sClass){
+        if(aEle[i].className.indexOf(sClass)!=-1){
             aResult.push(aEle[i]);
         }
     }
-    return aResult;
+    console.log(aResult)
+    return aResult
 };
