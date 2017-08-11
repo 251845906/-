@@ -31,7 +31,7 @@
 					alert('请求已完成，且响应已就绪')
 					switch(request.status){
 						case 200:
-							alert('ok')
+                            alert(request.responseText)
 						break;
 						case 404:
 							alert('未找到页面')
