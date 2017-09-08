@@ -15,7 +15,6 @@ function cls(oParent,sClass){
                 aResult.push(aEle[i]);
             }
         }
-        console.log(aResult)
-        return aResult
     }
+    return aResult
 };

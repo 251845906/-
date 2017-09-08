@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul,li{list-style: none;padding: 0}
+        ul{width: 520px;}
+        li{
+
+        }
+        .nav{
+            background:#215a9c;
+        }
+        .nav a{
+            font-size: 16px;
+            text-align: center;
+            color:#fff;
+        }
+        .nav a:hover{
+            background: #84a5c6;
+        }
+    </style>
+</head>
+<body>
+<ul class="nav">
+    <li><a href="javascript:;">11111</a>
+        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
+    </li>
+    <li><a href="javascript:;">22222</a>
+        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
+    </li>
+    <li><a href="javascript:;">33333</a>
+        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
+    </li>
+    <li><a href="javascript:;">44444</a>
+        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
+    </li>
+    <li><a href="javascript:;">55555</a>
+        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
+    </li>
+</ul>
+</body>
+<script>
+    function cls(oParent,sClass){
+        if (document.getElementsByClassName){
+            return oParent.getElementsByClassName(sClass);
+        }else{
+            var aResult = [];
+            var aEle = oParent.getElementsByTagName('*');
+            for(var i=0; i<aEle.length;i++){
+                if(aEle[i].className.indexOf(sClass)!=-1){
+                    aResult.push(aEle[i]);
+                }
+            }
+        }
+        return aResult
+    };
+</script>
+<script type="text/javascript">
+    var primaryNav = cls(document,sprimary_nav);
+
+</script>
+</html>

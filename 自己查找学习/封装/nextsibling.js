@@ -1,6 +1,10 @@
 /**
  * Created by Administrator on 2017/8/3 0003.
  */
+
+
+”–Œ Ã‚
+
 function (dom){
     var par = Dom.parentNode;
     var par_child = child_node(par);
