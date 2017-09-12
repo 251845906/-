@@ -15,6 +15,6 @@ function cls(oParent,sClass){
                 aResult.push(aEle[i]);
             }
         }
+        return aResult
     }
-    return aResult
 };

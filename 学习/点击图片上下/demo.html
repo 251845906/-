@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer{
+            width:170px;
+            height: 450px;
+            margin: 50px auto;
+        }
+        .inside{
+            width: 100%;
+            height: 100%;
+        }
+        .inside_box{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        li{
+            width: 170px;
+            height: 250px;
+            list-style: none;
+            padding: 0;
+        }
+        ul{
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inside">
+            <a href="javascript:;" id="up"><img src="up.png" alt=""></a>
+            <div class="inside_box">
+                <ul>
+                    <li style="background: red"></li>
+                    <li style="background: blue"></li>
+                    <li style="background: brown"></li>
+                    <li style="background: green"></li>
+                    <li style="background: beige"></li>
+                </ul>
+            </div>
+            <a href="javascript:;" id="down"><img src="down.png" alt=""></a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function getStyle(object,property) {
+        return window.currentStyle ?
+            object.currentStyle[property]:window.getComputedStyle(object,null)[property];
+    }
+    function cls(oParent,sClass){
+        if (document.getElementsByClassName){
+            return oParent.getElementsByClassName(sClass);
+        }else{
+            var aResult = [];
+            var aEle = oParent.getElementsByTagName('*');
+            for(var i=0; i<aEle.length;i++){
+                if(aEle[i].className.indexOf(sClass)!=-1){
+                    aResult.push(aEle[i]);
+                }
+            }
+            return aResult
+        }
+    };
+    var up = document.getElementById('up');
+    var down = document.getElementById('down');
+    var insideBox =cls(document,'inside_box')[0];
+    var insideContent = insideBox.getElementsByTagName('ul')[0];
+    var ulHeight = parseInt(getStyle(insideContent,'height'));
+    var insideBoxHeight = parseInt(getStyle(insideBox,'height'));
+    var timer;
+    console.log(insideBoxHeight,ulHeight)
+    up.addEventListener('mousedown',function (e) {
+        var e = window.event || e;
+        if (e.button === 0){
+            var ulTop = getStyle(insideContent,'top');
+            var num = parseInt(ulTop);
+            timer = setInterval(function () {
+                num-=10;
+                if (num <= -(ulHeight-insideBoxHeight)){
+                    console.log(num,(ulHeight-insideBoxHeight))
+                    num = -(ulHeight-insideBoxHeight);
+                    clearInterval(timer);
+                };
+                insideContent.style.top = num +'px';
+            },1)
+        }
+    });
+    up.addEventListener('mouseup',function (e) {
+        var e = window.event || e;
+        if (e.button === 0){
+            clearInterval(timer);
+        }
+    })
+    down.addEventListener('mousedown',function (e) {
+        var e = window.event || e;
+        if (e.button === 0){
+            var ulTop = getStyle(insideContent,'top');
+            var num = parseInt(ulTop);
+            timer = setInterval(function () {
+                num+=10;
+                if (num >= 0){
+                    num = 0;
+                    clearInterval(timer);
+                };
+                insideContent.style.top = num +'px';
+            },1)
+        }
+    });
+    down.addEventListener('mouseup',function (e) {
+        var e = window.event || e;
+        if (e.button === 0){
+            clearInterval(timer);
+        }
+    })
+</script>
+</html>

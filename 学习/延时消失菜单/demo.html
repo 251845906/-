@@ -4,42 +4,67 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        ul,li{list-style: none;padding: 0}
-        ul{width: 520px;}
-        li{
-
+        a{
+            text-decoration: none;
         }
         .nav{
-            background:#215a9c;
+            background:url("1.png");
+            width: 520px;
+            height:36px;
+            position: absolute;
         }
-        .nav a{
-            font-size: 16px;
-            text-align: center;
+        .toNav{
+            padding-left: 8px;
+            padding-top: 6px;
+        }
+        .toNav a{
+            margin:0 12px;
+            padding:0 12px;
+            line-height: 25px;
             color:#fff;
+            font-size: 15px;
+            border-radius: 5px;
+            display: inline-block;
         }
-        .nav a:hover{
-            background: #84a5c6;
+        .toNav a:hover{
+            background: rgba(255,255,255,.2);
+        }
+        .subNav:nth-child(2){
+            left: 0px;
+        }
+        .subNav:nth-child(3){
+            left: 90px;
+        }
+        .subNav:nth-child(4){
+            left: 180px;
+        }
+        .subNav:nth-child(5){
+            left: 250px;
+        }
+        .subNav{
+            display: none;
+            position: absolute;
+            top:40px;
+            background: url("2.png");
+            width: 278px;
+            height: 31px;
+            font-size:12px;
+            padding-left: 14px;
+        }
+        .subNav a{
+            line-height: 34px;
+            margin: 0px 8px;
         }
     </style>
 </head>
 <body>
-<ul class="nav">
-    <li><a href="javascript:;">11111</a>
-        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
-    </li>
-    <li><a href="javascript:;">22222</a>
-        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
-    </li>
-    <li><a href="javascript:;">33333</a>
-        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
-    </li>
-    <li><a href="javascript:;">44444</a>
-        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
-    </li>
-    <li><a href="javascript:;">55555</a>
-        <div><a href="">11111</a><a href="">22222</a><a href="">33333</a><a href="">4444</a><a href="">55555</a></div>
-    </li>
-</ul>
+<div class="nav">
+    <div class="toNav"><a href="javascript:;">首页</a><a href="javascript:;">关于我们</a><a href="javascript:;">作品</a><a href="javascript:;">博客</a></div>
+    <div class="subNav"><a href="javascript:;">首页首页</a><a href="javascript:;">首页首页</a><a href="javascript:;">首页首页</a><a href="javascript:;">首页首页</a></div>
+    <div class="subNav"><a href="javascript:;">关于我们</a><a href="javascript:;">关于我们</a><a href="javascript:;">关于我们</a><a href="javascript:;">关于我们</a></div>
+    <div class="subNav"><a href="javascript:;">作品作品</a><a href="javascript:;">作品作品</a><a href="javascript:;">作品作品</a><a href="javascript:;">作品作品</a></div>
+    <div class="subNav"><a href="javascript:;">博客博客</a><a href="javascript:;">博客博客</a><a href="javascript:;">博客博客</a><a href="javascript:;">博客博客</a></div>
+</div>
 </body>
 <script>
     function cls(oParent,sClass){
@@ -53,12 +78,40 @@
                     aResult.push(aEle[i]);
                 }
             }
+            return aResult
         }
-        return aResult
     };
 </script>
 <script type="text/javascript">
-    var primaryNav = cls(document,sprimary_nav);
+
+    var toNav_A = cls(document,'toNav')[0].getElementsByTagName('a');
+    var subNav = cls(document,'subNav');
+    var timer;
+    for (var i = 0;i<toNav_A.length;i++){
+        toNav_A[i].index = i;
+        toNav_A[i].addEventListener('mouseenter',function () {
+            clearInterval(timer)
+            for (var j = 0;j<subNav.length;j++){ subNav[j].style.display = 'none';}
+            subNav[this.index].style.display = 'block';
+        })
+        toNav_A[i].addEventListener('mouseleave',function () {
+            var index = this.index;
+            timer = setTimeout(function () {
+                subNav[index].style.display = 'none';
+            },500)
+        })
+    };
+    for (var i = 0;i<subNav.length;i++){
+        subNav[i].addEventListener('mouseenter',function () {
+            clearInterval(timer)
+        });
+        subNav[i].addEventListener('mouseleave',function () {
+            var thisSubnav = this
+            timer = setTimeout(function () {
+                thisSubnav.style.display = 'none';
+            },500)
+        })
+    }
 
 </script>
 </html>
