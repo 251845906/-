@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .banner{
+            width: 320px;
+            height: 210px;
+            border:1px solid red;
+            padding:5px;
+            margin: 100px auto;
+        }
+        a{
+            border:1px solid red;
+            font-size:14px;
+            display: block;
+            width: 50px;
+            height: 25px;
+            line-height: 25px;
+            margin-bottom: 3px;
+            text-align: center;
+            color: #000;
+        }
+        a.active{
+            color: #fff;
+            background: #ff637b;
+        }
+        ul{
+            width: 190px;
+            height:205px;
+            overflow: hidden;
+            border:1px solid red;
+            margin: 0px 10px;
+            position: relative;
+        }
+        li{
+            width: 190px;
+            height:205px;
+            background: #000;
+            text-align: center;
+            line-height: 205px;
+            font-size: 26px;
+            color: #fff;
+            position: absolute;
+            left: 0;
+            top:0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div class="leftNav fl">
+            <a href="javascript:;">连衣裙</a>
+            <a href="javascript:;">雪纺</a>
+            <a href="javascript:;">T恤</a>
+            <a href="javascript:;">铅笔裤</a>
+            <a href="javascript:;">婚纱</a>
+            <a href="javascript:;">外套</a>
+            <a href="javascript:;">连体裤</a>
+        </div>
+        <ul class="Img fl">
+            <li>连衣裙</li>
+            <li>雪纺</li>
+            <li>T恤</li>
+            <li>铅笔裤</li>
+            <li>婚纱</li>
+            <li>外套</li>
+            <li>连体裤</li>
+            <li>包包</li>
+            <li>凉鞋</li>
+            <li>单鞋</li>
+            <li>太阳镜</li>
+            <li>丝袜</li>
+            <li>帆布鞋</li>
+            <li>情侣装</li>
+        </ul>
+        <div class="leftNav fl">
+            <a href="javascript:;">包包</a>
+            <a href="javascript:;">凉鞋</a>
+            <a href="javascript:;">单鞋</a>
+            <a href="javascript:;">太阳镜</a>
+            <a href="javascript:;">丝袜</a>
+            <a href="javascript:;">帆布鞋</a>
+            <a href="javascript:;">情侣装</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function cls(oParent,sClass){
+        if (document.getElementsByClassName){
+            return oParent.getElementsByClassName(sClass);
+        }else{
+            var aResult = [];
+            var aEle = oParent.getElementsByTagName('*');
+            for(var i=0; i<aEle.length;i++){
+                if(aEle[i].className.indexOf(sClass)!=-1){
+                    aResult.push(aEle[i]);
+                }
+            }
+            return aResult
+        }
+    };
+    var banner = document.getElementById('banner');
+    var nav = banner.getElementsByTagName('a');
+    var ImgLi = banner.getElementsByTagName('li');
+    var num = 0,timer;
+    fn_banner(num);
+    timer = setInterval(function () {
+        num>=nav.length-1?  num = 0:num++;
+        num >= nav.length/2?
+        fn_banner(num)
+    },800)
+    function fn_banner(num) {
+        for(let i = 0;i<nav.length;i++){
+            nav[i].className = '';
+            ImgLi[i].style.display = 'none';
+        };
+        nav[num].className = 'active';
+        ImgLi[num].style.display = 'block';
+    }
+</script>
+</html>

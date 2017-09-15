@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../reset.css">
+    <style>
+        .table{
+            width: 302px;
+            height: 124px;
+            padding: 10px;
+            border: 1px solid #000000;
+            margin:50px auto;
+        }
+        .nav a{
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 15px;
+            background: #94ffc6;
+            color: #000;
+        }
+        .nav a.active{
+            color: #fff;
+            background: #005a63;
+        }
+        .content{
+            display: none;
+        }
+        .content.active{
+            display: block;
+        }
+        .content .left {
+            width: 200px;
+            height:90px;
+            overflow: hidden;
+        }
+        .content li {
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: #000000;
+            color: #fff;
+            text-align: center;
+            line-height: 90px;
+            font-size: 50px;
+        }
+        .content li.active{
+            display: block;
+        }
+        .subnav a{
+            display: block;
+            width: 100px;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 16px;
+            color:#000;
+            background: #f7f7f7;
+        }
+        .subnav a.active{
+            color:#fff;
+            background: #639cc6;
+        }
+    </style>
+</head>
+<body>
+<div class="table" id="table">
+    <div class="nav">
+        <a href="javascript:;">菜单一</a><a href="javascript:;">菜单二</a><a href="javascript:;">菜单三</a>
+    </div>
+    <div class="content clearfix active">
+        <ul class="left fl">
+            <li>1-1</li>
+            <li>1-2</li>
+            <li>1-3</li>
+        </ul>
+        <div class="subnav fl">
+            <a href="javascript:;">内容一</a>
+            <a href="javascript:;">内容二</a>
+            <a href="javascript:;">内容三</a>
+        </div>
+    </div>
+    <div class="content clearfix">
+        <ul class="left fl">
+            <li>2-1</li>
+            <li>2-2</li>
+            <li>2-3</li>
+        </ul>
+        <div class="subnav fl">
+            <a href="javascript:;">内容一</a>
+            <a href="javascript:;">内容二</a>
+        </div>
+    </div>
+    <div class="content clearfix">
+        <ul class="left fl">
+            <li>3-1</li>
+            <li>3-2</li>
+            <li>3-3</li>
+        </ul>
+        <div class="subnav fl">
+            <a href="javascript:;">内容一</a>
+            <a href="javascript:;">内容二</a>
+            <a href="javascript:;">内容三</a>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    function cls(oParent,sClass){
+        if (document.getElementsByClassName){
+            return oParent.getElementsByClassName(sClass);
+        }else{
+            var aResult = [];
+            var aEle = oParent.getElementsByTagName('*');
+            for(var i=0; i<aEle.length;i++){
+                if(aEle[i].className.indexOf(sClass)!=-1){
+                    aResult.push(aEle[i]);
+                }
+            }
+            return aResult
+        }
+    };
+    var tab = document.getElementById('table');
+//    var tab_content = cls(tab,'content');
+//    var content_subnav = cls(tab,'subnav');
+//    var content_Left = cls(tab,'left');
+//    var subNav_arr = [];
+//    var contLi_arr = [];
+//    for (let i = 0;i<content_subnav.length;i++){
+//        var subnav_A = content_subnav[i].getElementsByTagName('a');
+//        for (let j = 0;j<subnav_A.length;j++){
+//            subNav_arr.push(subnav_A[j]);
+//        };
+//    };
+//    for (let i = 0;i<content_Left.length;i++){
+//        var left_li = content_Left[i].getElementsByTagName('li');
+//        for (let j = 0;j<left_li.length;j++){
+//            contLi_arr.push(left_li[j]);
+//        };
+//    };
+    var tab_Nav = cls(tab,'nav')[0].getElementsByTagName('a');
+    var timer,num = 0,tab_Cont = cls(tab,'content'),sub_Num = 0;
+    timer = setInterval(function () {
+        for (var i = 0;i<tab_Nav.length;i++){
+            tab_Cont[i].className = 'content clearfix';
+            tab_Nav[i].className = '';
+        }
+        tab_Cont[num].className ='content clearfix active';
+        tab_Nav[num].className ='active';
+        fn_subNav(tab_Cont[num])
+    },2000)
+    function fn_subNav(dom){
+        var sub_Nav = cls(dom,'subnav')[0].getElementsByTagName('a');
+        var cont_Li = cls(dom,'left')[0].getElementsByTagName('li');
+        for (var i = 0;i<sub_Nav.length;i++){
+            sub_Nav[i].className = '';
+            cont_Li[i].className = '';
+        }
+        sub_Nav[sub_Num].className = 'active';
+        cont_Li[sub_Num].className = 'active';
+        sub_Num ++;
+        if (sub_Num >= sub_Nav.length){
+            num ++;
+            if(num >= tab_Cont.length){
+                num = 0;
+            }
+            sub_Num = 0;
+        }
+    }
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
