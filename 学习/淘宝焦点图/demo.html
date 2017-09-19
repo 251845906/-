@@ -5,7 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../reset.css">
     <style>
-        .banner{
+        #banner{
             width: 320px;
             height: 210px;
             border:1px solid red;
@@ -48,6 +48,13 @@
             top:0;
             display: none;
         }
+        .rightNav{
+            width: 50px;
+        }
+        .rightNav a{
+            display: inline;
+            float: right;
+        }
     </style>
 </head>
 <body>
@@ -77,7 +84,7 @@
             <li>帆布鞋</li>
             <li>情侣装</li>
         </ul>
-        <div class="leftNav fl">
+        <div class="rightNav fl clearfix">
             <a href="javascript:;">包包</a>
             <a href="javascript:;">凉鞋</a>
             <a href="javascript:;">单鞋</a>
@@ -110,9 +117,13 @@
     fn_banner(num);
     timer = setInterval(function () {
         num>=nav.length-1?  num = 0:num++;
-        num >= nav.length/2?
-        fn_banner(num)
-    },800)
+        if (num>=nav.length/2){
+            thisnum = nav.length - num + parseInt((nav.length-1)/2);
+            fn_banner(thisnum)
+        }else{
+            fn_banner(num)
+        }
+    },800);
     function fn_banner(num) {
         for(let i = 0;i<nav.length;i++){
             nav[i].className = '';
