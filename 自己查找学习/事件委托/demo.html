@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a{
+            display: inline-block;
+            width: 60px;
+            height:60px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+<a href="javascript:;"></a>
+</body>
+<script>
+//    当事件执行时event就是事件
+//或者说  事件执行时  创建一个event对象
+//event对象包涵  事件触发的情况
+
+//altKey	        返回当事件被触发时，"ALT" 是否被按下。
+//button	        返回当事件被触发时，哪个鼠标按钮被点击。 0	规定鼠标左键。 1	规定鼠标中键。 2	规定鼠标右键。
+//ctrlKey	        返回当事件被触发时，"CTRL" 键是否被按下。
+//metaKey	        返回当事件被触发时，"meta" 键是否被按下。
+//shiftKey	        返回当事件被触发时，"SHIFT" 键是否被按下。
+
+//relatedTarget	    返回与事件的目标节点相关的节点。
+//                  对于mouseover 事件来说，该属性是鼠标指针移到目标节点上时所离开的那个节点。
+//                  对于mouseout 事件来说，该属性是离开目标时，鼠标指针进入的节点。对于其他类型的事件来说，这个属性没有用。
+
+//screenX	        返回当某个事件被触发时，鼠标指针的水平坐标。
+//screenY	        返回当某个事件被触发时，鼠标指针的垂直坐标。
+//                  screenX:鼠标位置相对于用户屏幕水平偏移量，而screenY也就是垂直方向的，此时的参照点也就是原点是屏幕的左上角。
+//                  鼠标距离桌面屏幕顶端
+
+//clientX	        返回当事件被触发时，鼠标指针的水平坐标。
+//clientY	        返回当事件被触发时，鼠标指针的垂直坐标。
+//                  clientX:跟screenX相比就是将参照点改成了浏览器内容区域的左上角，该参照点会随之滚动条的移动而移动。
+//                  鼠标距离浏览器状态栏的距离
+
+//pageX：            返回当事件被触发时，鼠标指针的水平坐标。
+//pageY              返回当事件被触发时，鼠标指针的垂直坐标。
+//                   page：参照点也是浏览器内容区域的左上角，但它不会随着滚动条而变动
+//                   也就是页面顶部的距离
+
+
+//bubbles	        返回布尔值，指示事件是否是起泡事件类型。
+//                  ev.target.nodeName === 'BODY'   当target等于本身的时候  可以阻止冒泡
+//cancelable	    返回布尔值，指示事件是否可拥可取消的默认动作。
+//currentTarget	    返回其事件监听器触发该事件的元素。
+//eventPhase	    返回事件传播的当前阶段。
+//target	        返回触发此事件的元素（事件的目标节点）。
+//timeStamp	        返回事件生成的日期和时间。
+//type	            返回当前 Event 对象表示的事件的名称。
+
+
+
+    var star,oA = document.getElementsByTagName('a');
+
+    window.addEventListener ? document.body.addEventListener('click', function (ev) {
+                            ev = ev || window.event;
+                                console.log('body')
+                            if (ev.target.nodeName === 'BODY'){
+                                console.log('body')
+                            }
+                        }):document.body.attachEvent('onclick',function (ev) {
+                            console.log(window.event)
+//                            ev = ev || window.event;
+                            console.log(ev.target)
+//                            if (ev.target.nodeName === 'BODY'){
+//                                console.log('body')
+//                            }
+                        });
+
+//    window.onkeydown = function (ev) {
+//        ev = ev || window.event;
+//        console.log(ev)
+//    }
+</script>
+</html>

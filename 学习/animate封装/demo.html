@@ -32,13 +32,17 @@
 
 
     front.onclick = function () {
-        animate(oDiv,'opacity','0',.1,80,function () {
-            console.log(1)
+        animate(oDiv,'opacity','0.4',.1,30,function () {
+            animate(oDiv,'left','800px',10,30,function () {
+                animate(oDiv,'top','500px',10,30,)
+            })
         })
     };
     queen.onclick = function () {
-        animate(oDiv,'opacity','1',.1,80,function () {
-            console.log(2)
+        animate(oDiv,'opacity','1',.1,30,function () {
+            animate(oDiv,'top','0px',10,30,function () {
+                animate(oDiv,'width','300px',10,30)
+            })
         })
     };
     function getStyle(object,property) {
@@ -91,7 +95,8 @@
             }
             dom.style[attr] = thisNum + unit;
             if (thisNum === parseFloat(price)){
-                callback ? callback():console.log();
+                callback && callback()
+//                callback 存在则运行函数
             }
         },speed)
     }
