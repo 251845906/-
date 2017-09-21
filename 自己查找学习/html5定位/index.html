@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=P9G07FhROHfXoSDyYLBGCGs7S1RWdvyK"></script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript">
+        alert(returnCitySN.cip)
+    </script>
+</head>
+<body>
+<script>
+    var Longitude,Latitude;
+//      经度       纬度
+    getLocation();
+    var ggPoint = new BMap.Point(Longitude,Latitude);
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    function getLocation(){    //检测是否支持地理定位 如果支持，则运行 getCurrentPosition() 方法。如果不支持，则向用户显示一段消息。
+        if (navigator.geolocation){
+            //如果getCurrentPosition()运行成功， //则向参数showPosition中规定的函数返回一个coordinates对象
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+    }
+    function showPosition(position){
+        //showPosition() 函数获得并赋值经度和纬度
+        Longitude = position.coords.longitude;
+        Latitude = position.coords.latitude;
+    }
+
+</script>
+
+</html>
+</body>
+</html>
