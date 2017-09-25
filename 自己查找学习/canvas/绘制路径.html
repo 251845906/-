@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="MyCanvas" width="1800" height="750" style="border:1px solid #000000;">
+
+</canvas>
+<script>
+//    beginPath()
+//    新建一条路径，生成之后，图形绘制命令被指向到路径上生成路径。
+//    closePath()
+//    闭合路径之后图形绘制命令又重新指向到上下文中。
+//    stroke()
+//    通过线条来绘制图形轮廓。
+//    fill()
+//    通过填充路径的内容区域生成实心的图形。
+    var canvas = document.getElementById('MyCanvas');
+    var cabvasD2 = canvas.getContext("2d");
+    cabvasD2.beginPath();
+    cabvasD2.moveTo(75,50);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/base-min.css">
+    <!-- prue的重置样式   目前不清楚作用-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/pure-min.css" integrity="sha384-CCTZv2q9I9m3UOxRLaJneXrrqKwUNOzZ6NGEUMwHtShDJ+nCoiXJCAgi05KfkLGY" crossorigin="anonymous">
+    <!--引入prue文件-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <!--[if lte IE 8] 小于等于ie8的时候采用上面-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <!--[if gt IE 8] 不小于ie8的时候采用上面-->
+    <!--栅格的css的引入-->
+</head>
+<body>
+<!--表格-->
+<p>给form加个pure-form就可以创建默认的单行表单</p>
+<h1>pure-form  创建单行表单</h1>
+<form class="pure-form"><!--pure-form 单行表单  -->
+    <fieldset>
+        <legend>pure-form 单行表单 一个简单的单行表单</legend>
+        <!--表格头部-->
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <label for="remember">
+            <input id="remember" type="checkbox"> 记住我
+        </label>
+        <button type="submit" class="pure-button pure-button-primary">登录</button>
+    </fieldset>
+</form>
+
+
+</body>
+</html>

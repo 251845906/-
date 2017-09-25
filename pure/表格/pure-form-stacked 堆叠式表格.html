@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/base-min.css">
+    <!-- prue的重置样式   目前不清楚作用-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/pure-min.css" integrity="sha384-CCTZv2q9I9m3UOxRLaJneXrrqKwUNOzZ6NGEUMwHtShDJ+nCoiXJCAgi05KfkLGY" crossorigin="anonymous">
+    <!--引入prue文件-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <!--[if lte IE 8] 小于等于ie8的时候采用上面-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <!--[if gt IE 8] 不小于ie8的时候采用上面-->
+    <!--栅格的css的引入-->
+</head>
+<body>
+<!--堆叠式-->
+<p>加了class pure-form后，再加个class pure-form-stacked可实现如下效果：</p>
+<h1>class pure-form-stacked 创建堆叠式表单（多行）</h1>
+<form class="pure-form pure-form-stacked">
+    <fieldset>
+        <legend>堆叠式表单</legend>
+        <label for="email">email输入框</label>
+        <input id="email" type="email" placeholder="Email">
+        <label for="password">Password输入框</label>
+        <input id="password" type="password" placeholder="Password">
+        <label for="state">State</label>
+        <select id="state">
+            <option>AL</option>
+            <option>CA</option>
+            <option>IL</option>
+        </select>
+        <label for="remember" class="pure-checkbox">
+            <input id="remember" type="checkbox"> Remember me
+        </label>
+        <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+    </fieldset>
+</form>
+
+</body>
+</html>
