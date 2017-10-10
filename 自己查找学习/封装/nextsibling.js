@@ -3,9 +3,7 @@
  */
 
 
-”–Œ Ã‚
-
-function (dom){
+function fn_nextsiblings(dom){
     var par = Dom.parentNode;
     var par_child = child_node(par);
     var sib = dom.nextSibling;

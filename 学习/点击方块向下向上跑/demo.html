@@ -5,9 +5,10 @@
     <title>Title</title>
     <style>
         a{
-            display: inline-block;
             width: 60px;
             height:60px;
+            position: absolute;
+            top:0;
             background: blue;
         }
     </style>
@@ -28,13 +29,99 @@
     <a href="javascript:;"></a>
 </body>
 <script>
-    var star,oA = document.getElementsByTagName('a');
-    document.body.onclick = function (ev) {
-        ev = ev || window.event;
-        if (ev.target.nodeName === 'A'){
+    function animate(dom,attr,price,distance,speed,callback){
+        //           dom  当前运行的dom
+        //           propert  运行的属性  width  top ....
+        //           price   运行到那种程度   px  rem  em ...
+        //           speed   运行速度
+        //           callback   回调函数
+        //           distance   m每次运行距离
+        clearInterval(dom.timer);
 
+        //获取单位
+        if (parseFloat(price) === Number(price)){
+            var unit = '';
+        }else{
+            for (var i = 0;i<price.length;i++){
+                if (!price.charAt(i).match(/^[0-9,-.]*$/)){
+                    var unit = price.substring(i);
+                    break;
+                }
+            }
         }
 
+        dom.timer = setInterval(function () {
+            // 获取要运动的元素数值     并赋予运用的值
+            var thispropert = getStyle(dom,attr);
+
+            var thisNum = parseFloat(thispropert);
+            // 开始运动
+            //判断是正运作还是反运作
+
+            if(thisNum<parseFloat(price)){
+                thisNum = thisNum + distance;
+                //                还有一种加负数
+                if (thisNum>=parseFloat(price)){
+                    thisNum = parseFloat(price);
+                    clearInterval(dom.timer)
+                };
+            }else{
+                thisNum = thisNum - distance;
+                //                还有一种加负数
+                if (thisNum<=parseFloat(price)){
+                    thisNum = parseFloat(price);
+                    clearInterval(dom.timer)
+                };
+            }
+            dom.style[attr] = thisNum + unit;
+            if (thisNum === parseFloat(price)){
+                callback && callback()
+//                callback 存在则运行函数
+            }
+        },speed)
+    };
+    function getStyle(object,property) {
+        return window.currentStyle ?
+            object.currentStyle[property] : window.getComputedStyle(object, null)[property];
+    };
+</script>
+<script>
+    var oA = document.getElementsByTagName('a'),num = 0,thisAttr;
+    for (var i = 0;i<oA.length;i++){
+        oA[i].style.left = i*80 +'px';
+    }
+    document.body.onclick = function (ev) {
+        for (var i = 0;i<oA.length;i++){
+            clearInterval(oA[i].timer);
+        }
+        oA[num].timer = setInterval(function () {
+            if (num>=oA.length) {
+                if (num>=oA.length*2){
+                    for (var i = 0;i<oA.length;i++){
+                        clearInterval(oA[i].timer);
+                    }
+                }else{
+                   thisAttr = getStyle(oA[num-oA.length],'top');
+                    if (parseFloat(thisAttr)<=0){
+                        oA[num-oA.length].style.top = '0px';
+                        num ++;
+                        clearInterval(oA[num-oA.length].timer)
+                    }else{
+                        oA[num-oA.length].style.top = parseFloat(thisAttr)- 10 +'px';
+                    }
+                }
+            }else{
+                thisAttr = getStyle(oA[num],'top');
+                if (parseFloat(thisAttr)>=800){
+                    oA[num].style.top = '800px';
+                    num ++;
+                    clearInterval(oA[num].timer)
+                }else{
+                    oA[num].style.top = parseFloat(thisAttr)+ 10 +'px';
+                }
+            }
+
+        },10)
     }
 </script>
 </html>

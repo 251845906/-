@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        div{
-            width: 400px;
-            height: 260px;
-            margin: 100px auto;
-        }
         a{
             display: block;
-            width: 100%;
-            height: 100%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 60px;
         }
         img{
             width: 100%;
@@ -38,7 +35,7 @@
                 var unit = '';
             }else{
                 for (var i = 0;i<price.length;i++){
-                    if (!price.charAt(i).match(/^[0-9,-.]*$/)){
+                    if (!price.charAt(i).match(/^[0-9,-]*$/)){
                         var unit = price.substring(i);
                         break;
                     }
@@ -71,83 +68,83 @@
                 dom.style[attr] = thisNum + unit;
                 if (thisNum === parseFloat(price)){
                     callback && callback()
-//                callback 存在则运行函数
+//                  callback 存在则运行函数
                 }
             },speed)
         }
     </script>
 </head>
 <body>
-    <div>
-        <a href="javascript:;"><img src="timg.jpg" alt=""></a>
-    </div>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
-    <h1>sssssssssssssssssssssssssssss</h1>
+    <a href="javascript:;"><img src="timg.jpg" alt=""></a>
+    <a href="javascript:;"><img src="timg.jpg" alt=""></a>
+    <a href="javascript:;"><img src="timg.jpg" alt=""></a>
+    <a href="javascript:;"><img src="timg.jpg" alt=""></a>
+    <a href="javascript:;"><img src="timg.jpg" alt=""></a>
+    <a href="javascript:;"><img src="timg.jpg" alt=""></a>
+    <a href="javascript:;"><img src="timg.jpg" alt=""></a>
+    <a href="javascript:;"><img src="timg.jpg" alt=""></a>
     <script>
-        var oA = document.getElementsByTagName('a')[0];
-        oA.onmouseenter = function (e) {
-            var ev = e || window.event;
-            console.log(ev.pageX,ev.pageY)
-            console.log(ev.clientX,ev.clientY)
-            console.log(this.clientTop,this.clientLeft)
+        var oA = document.getElementsByTagName('a');
+        for (var i = 0;i<oA.length;i++){
+            oA[i].style.left = i*60+'px';
+//            oA[i].setAttribute('star',true);
+        };
+        for (var i = 0;i<oA.length;i++){
+            oA[i].onmouseenter = function () {
+                fn_shake(this,'top',5,1,20)
+            }
+        }
+//        oA.addEventListener('click',function (e) {
+//            fn_shake(this,'top',5,1,20)
+//        },true)
+        function fn_shake(dom,attr,distance,reduce,speed,callback){
+//                dom       抖动元素
+//                attr      抖动属性
+//                reduce    抖动时候每次减少的距离
+//                distance  东东距离
+//                speed     计时器时间
+//                callback  回调
+           if (dom.star == undefined || dom.star == true){
+               dom.star = false;
+               var arr = [];
+//            抖动数组
+               var timer;
+//            声明定时器
+               var thisDom = dom;
+//            给当前dom赋值
+               var num = 0;
+//          计时器每次改变的下标
+               var getAttr = getStyle(dom,attr);
+//          获取当前的attr属性
+               var AttrNum = parseFloat(getAttr);
+
+               for (var i = distance; i>0; i-=reduce){
+                   arr.push(i,-i);
+//                抖动要用的值
+               }
+               clearInterval(thisDom.timer)
+//            每次点击时候清除定时器
+               thisDom.timer = setInterval(function () {
+//                开启定时器
+//                判断下标是否>运行值的长度
+//                如果大于等于则抖动结束  小于是继续执行
+                   if (num>=arr.length){
+//                    如果大于等于则抖动结束 回归原位 并清除定时器
+                       thisDom.style[attr] = getAttr;
+                       clearInterval(timer)
+                       dom.star = true;
+                       callback&&callback()
+//                    回调函数存在时候执行回调
+                   }else{
+//                    不大于的情况执行下次要抖动的距离
+                       thisDom.style[attr] = (AttrNum+arr[num])+'px';
+                   }
+                   num++;
+               },speed)
+
+           }
+//            dom.setAttribute('star',false);
+//            点击时给元素添加自定义属性
         }
     </script>
 </body>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        try {
+            document.writeln("开始执行try块语句 ---> ")
+            document.writeln("还没有发生例外 ---> ")
+            alert((prompt("输入一个值：","")))
+        } catch(err) {
+            document.writeln("捕捉到例外，开始执行catch块语句 --->");
+            document.writeln("错误名称: " + err.name+" ---> ");
+            document.writeln("错误信息: " + err.message+" ---> ");
+        } finally {
+            document.writeln("开始执行finally块语句")
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

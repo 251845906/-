@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            border:1px solid #000;
+            width: 500px;
+            height:40px;
+            margin:80px auto;
+            line-height: 40px;
+            position: relative;
+        }
+        a{
+            position: absolute;
+            z-index: 2;
+            color: #000;
+            text-decoration: none;
+            top: 0px;
+        }
+        span{
+            display: block;
+            position: absolute;
+            width: 500px;
+            height: 40px;
+            background: #00b3ee;
+            z-index: 1;
+            opacity: 0;
+        }
+    </style>
+    <script src="../ku.js"></script>
+</head>
+<body>
+    <div>
+        <span></span>
+        <a href="">+1</a>
+        <a href="">+1</a>
+        <a href="">+1</a>
+        <a href="">+1</a>
+        <a href="">+1</a>
+        <a href="">+1</a>
+        <a href="">+1</a>
+        <a href="">+1</a>
+        <a href="">+1</a>
+        <a href="">+1</a>
+    </div>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oSpan = oDiv.getElementsByTagName('span')[0];
+        var oA = oDiv.getElementsByTagName('a');
+        var num = 0;
+        for (var i = 0;i<oA.length;i++){
+            oA[i].style.left = i * 52 + 'px';
+        }
+        oDiv.addEventListener('click',function () {
+            timer1 = setInterval(function () {
+                if (num>=oA.length){
+                    clearInterval(timer1)
+                }else{
+                    fn_toTop(oA[num])
+                    num++;
+                }
+            },100)
+            oSpan.a = setInterval(function () {
+                var attr = parseFloat(getStyle(oSpan,'opacity'));
+                var wiDth = parseFloat(getStyle(oSpan,'width'));
+
+
+                attr += 0.1;
+                if (attr>=1){
+                    clearInterval(oSpan.a)
+                    oSpan.style.opacity = 1;
+
+                    oSpan.b = setInterval(function () {
+                        var attr = parseFloat(getStyle(oSpan,'opacity'));
+                        attr -= 0.1;
+                        if (attr<=0){
+                            clearInterval(oSpan.b)
+                            oSpan.style.opacity = 0;
+                        }else{
+                            oSpan.style.opacity = attr;
+                        }
+                    },80)
+
+                }else{
+                    oSpan.style.opacity = attr;
+                }
+            },80)
+        })
+        function fn_toTop(dom){
+            dom.timer = setInterval(function () {
+                var attr = getStyle(dom,'top');
+                var attrNumber = parseFloat(attr);
+                attrNumber += -4;
+                if (attrNumber<=-50){
+                    fn_opacity(dom,0)
+                    if(attrNumber<=-70){
+                        clearInterval(dom.timer);
+                        dom.style.top = '-70px';
+                    }else{
+                        dom.style.top = attrNumber + 'px'
+                    }
+
+                }else{
+                    dom.style.top = attrNumber + 'px'
+                }
+            },20)
+        }
+        function fn_opacity(dom,target,callback) {
+            dom.a = setInterval(function () {
+                var attr = parseFloat(getStyle(dom,'opacity'));
+                attr -= 0.1;
+                if (attr<=target){
+                    clearInterval(dom.a)
+                    dom.style.opacity = target;
+                }else{
+                    dom.style.opacity = attr;
+                }
+            },80)
+        }
+    </script>
+</body>
+</html>
