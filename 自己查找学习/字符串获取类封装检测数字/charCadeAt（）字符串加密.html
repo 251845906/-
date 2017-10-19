@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<button>加密</button>
+<p></p>
+<strong>将获取的charCodeAt进行加减在转回字符串  这样规则只有你自己知道了</strong>
+<script>
+    const ipt = document.getElementsByTagName('input')[0];
+    const btn = document.getElementsByTagName('button')[0];
+    const oP = document.getElementsByTagName('p')[0];
+    btn.onclick = function () {
+        let iptVal = ipt.value;
+        let valCode = '';
+        for (var i = 0;i<iptVal.length;i++){
+//            将获取的charCodeAt进行加减在转回字符串  这样规则只有你自己知道了
+            valCode += String.fromCharCode(iptVal.charCodeAt(i)-10050);
+        }
+        oP.innerHTML =  valCode;
+        ipt.value = '';
+    }
+</script>
+</body>
+</html>

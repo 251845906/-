@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+//倒计时就是一个目标时间  一个获取现在时间
+
+//然后用公式
+
+
+    function fn_countTimer() {
+        //获取现在时间
+        var nowTimer = new Date();
+        //    先设置目标一个时间
+        var targetTimer = new Date(2017,9,13,14,16,59);
+        //目标时间减去现在时间就是剩下时间
+        if (targetTimer - nowTimer>=0){
+            //往下面是转换公式
+            var gapTimer =  Math.floor((targetTimer - nowTimer)/1000);
+            //gap 差距  现在时间距离目标时间的值   毫秒数  /1000转化为秒
+
+            var day = Math.floor(gapTimer/86400);
+            //转换成天
+            var hour = Math.floor(gapTimer%86400/3600);
+            //转换为时
+            var minute = Math.floor(gapTimer%86400%3600/60);
+            //转换为分
+            var second = Math.floor(gapTimer%60);
+            //转换为秒
+            var str = day+'天:'+hour+'时:'+minute+'分'+second+'秒';
+        }else{
+            var str = 00+'天:'+00+'时:'+00+'分'+00+'秒';
+        }
+
+        return str
+    }
+
+
+
+    setInterval(function () {
+        document.body.innerHTML = fn_countTimer();
+    },1000)
+</script>
+</html>

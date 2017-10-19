@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str = '0123456789';
+
+//        substring   截取字符串
+        console.log(str.substring(5))
+//        截取了第5位起往后的字符
+        console.log(str.substring(0,2))
+//        截取了第0位起到第二位起的字符串
+        console.log(str.substring(2,0))
+//        截取的还是第0位起到第二位起的字符串
+//        会检测一下参数大小 小的数字自动放在第一个参数位置
+        console.log(str.substring(-3,2))
+//        截取的还是第0位起到第二位起的字符串
+//        第一位负数的情况把负数转换为0
+        console.log(str.substring(2,-3))
+//        截取的还是第0位起到第二位起的字符串
+//        第二位负数的情况把负数转换为0 在进行大小比较后吧小的放第一位
+
+//        slice   截取字符串
+        console.log(str.slice(5))
+//        截取了第5位起往后的字符
+        console.log(str.slice(0,2))
+//        截取了第0位起到第二位起的字符串
+        console.log(str.slice(5,0))
+//        结果为空  slice不具有交换位置的功能
+//        从第5位往后找不到第0位
+        console.log(str.slice(-2))
+//        截取的从倒数第二位到最后
+//        为负数的时候藏最后面开始算
+        console.log(str.slice(-4,-2))
+//        截取的从倒数第4位到倒数第二位
+        console.log(str.slice(-2,-4))
+//        结果为空  slice不具有交换位置的功能
+//        从倒数第二位往后找不到到书第4位
+
+//        相当于一个数字轴
+//        -5,-4,-3,-2,-1,0,1,2,3,4,5,6
+
+    </script>
+</head>
+<body>
+<strong>
+    substring截取是包含参数位置
+</strong>
+<p>
+    console.log(str.substring(5))<br>
+    //        截取了第四位起往后的字符<br>
+    console.log(str.substring(0,2))<br>
+    //        截取了第0位起到第二位起的字符串<br>
+    console.log(str.substring(2,0))<br>
+    //        截取的还是第0位起到第二位起的字符串<br>
+    //        会检测一下参数大小 小的数字自动放在第一个参数位置<br>
+    console.log(str.substring(-3,2))<br>
+    //        截取的还是第0位起到第二位起的字符串<br>
+    //        第一位负数的情况把负数转换为0<br>
+    console.log(str.substring(2,-3))<br>
+    //        截取的还是第0位起到第二位起的字符串<br>
+    //        第二位负数的情况把负数转换为0 在进行大小比较后吧小的放第一位<br>
+</p>
+<strong>
+    slice截取是包含参数位置
+</strong>
+<p>
+    console.log(str.slice(5))<br>
+    //        截取了第5位起往后的字符<br>
+    console.log(str.slice(0,2))<br>
+    //        截取了第0位起到第二位起的字符串<br>
+    console.log(str.slice(5,0))<br>
+    //        结果为空  slice不具有交换位置的功能<br>
+    //        从第5位往后找不到第0位<br>
+    console.log(str.slice(-2))<br>
+    //        截取的从倒数第二位到最后<br>
+    //        为负数的时候藏最后面开始算<br>
+    console.log(str.slice(-4,-2))<br>
+    //        截取的从倒数第4位到倒数第二位<br>
+    console.log(str.slice(-2,-4))<br>
+    //        结果为空  slice不具有交换位置的功能<br>
+    //        从倒数第二位往后找不到到书第4位<br>
+
+    //        相当于一个数字轴<br>
+    //        -5,-4,-3,-2,-1,0,1,2,3,4,5,6吧小的放第一位<br>
+</p>
+</body>
+</html>

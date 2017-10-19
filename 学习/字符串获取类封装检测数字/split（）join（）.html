@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str = 'www.baidu.com'
+        var a = str.split('');
+        console.log(a)
+//        将字符串分割成数组
+//        如果为'' 的时候把字符串的每一位都分开
+        var a = str.split('.');
+//        如果为任何字符串的时候字符串一字符串参数分割开来 分割后的字符串不包含参数字符串
+        console.log(a)
+        var a = str.split('.',2);
+//        第二个参数是数组长度  就是把字符串分割为几个字符串的数组
+        console.log(a)
+
+//        join()
+        var star = [0,1,2,3,4,5,6,7,8,9]
+        console.log(star.join(''))
+//        吧数组里面的组成一个字符串用空字符串链接
+        console.log(star.join(','))
+//        吧数组里面的组成一个字符串用,字符串链接
+    </script>
+</head>
+<body>
+
+</body>
+</html>

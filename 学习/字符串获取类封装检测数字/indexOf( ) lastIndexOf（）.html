@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+//        indexOf 第二个参数不能为负数  负数则从0开始
+
+
+        var str = 's5214e5d1e2d';
+        str.indexOf('2');
+//        从第0位往后找到字符创第一次出现2的位置
+        console.log(str.indexOf('2'))
+        str.indexOf('2',5);
+//        从第5位往后找到字符创第一次出现2的位置
+        console.log(str.indexOf('2',5))
+        str.lastIndexOf('2')
+//        从最后一位往前找到字符创第一次出现2的位置
+        console.log( str.lastIndexOf('2'))
+        str.lastIndexOf('2',5)
+//        从倒数第5位往后找到字符创第一次出现2的位置
+        console.log(str.lastIndexOf('2',5))
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            display: block;
+            width: 500px;
+            background: #9bcd81;
+            padding: 20px;
+        }
+        span{
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<input type="text">
+<input type="text">
+<input type="button" value="替换">
+<input type="button" value="复原">
+<p>
+    就不认识就打排位库链接阿是本地开户费你我还
+    差妈的智障女神阿库娅卡萨丁那就扯v胡恩爱谁的
+    客户第三方把剑卡萨丁了看见阿四大皆空就不认
+    识就打排位库链接阿是本地开户费你我还差妈的
+    智障女神阿库娅卡萨丁那就扯v胡恩爱谁的客户
+    第三方把剑卡萨丁了看见阿四大皆空
+</p>
+<script>
+    const oP = document.getElementsByTagName('p')[0];
+    const Ipt = document.getElementsByTagName('input');
+    const pHtml = oP.innerHTML;
+//    Ipt[1].onfocus = function () {
+//        if (Ipt[0].value.length>0){
+//            oP.innerHTML = pHtml;
+//            if (this.star == undefined || this.star){
+//                this.star = true;
+//
+//                Ipt[0].value = '';
+//            }
+//        }
+//    }
+    Ipt[2].onclick = function () {
+        oP.innerHTML = pHtml;
+        if (Ipt[0].value.length>0&&Ipt[1].value.length>0){
+            var THtml = oP.innerHTML;
+            oP.innerHTML = oP.innerHTML.split(Ipt[0].value).join("<span>"+Ipt[1].value+"</span>")
+        }
+
+    }
+    Ipt[3].onclick = function () {
+        oP.innerHTML = pHtml;
+    }
+
+</script>
+</body>
+</html>

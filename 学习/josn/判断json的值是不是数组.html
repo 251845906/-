@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var json1 = {
+            'arry':['aa','bb','cc','ff'],//object 4
+            'function':function () {},//function 0
+            'number':25,//number undefined
+            'string':'edd',//string 3
+            'bool':true,//boolean undefined
+            'json':{'a':55,'b':75},//object undefined
+//            'undef':undefined,
+//            'nul':null,
+//            undefined 和 null 测试长度的时候会报错
+            'nan':NaN,  //number undefined
+            'window':window,
+            'document':document,
+        };
+        for(var i in json1){
+            console.log(typeof json1[i],json1[i].length)
+            if (typeof json1[i] == 'object' && json1[i].length>0){
+//                可以判断 这个对象是数组
+                console.log(json1[i])
+            }
+        }
+        var star = '';
+        var num = 0;
+        for(var i in document){
+            star+=(num++)+'键'+i+'----------'+'值'+window[i]+'<br />'
+
+        }
+        window.onload = function () {
+            document.body.innerHTML = star;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

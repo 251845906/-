@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str = '我的课啊俺是';
+        console.log(str.charAt(2))
+//        获取第二个字符
+        console.log(str.charCodeAt(2))  //35838
+//        获取第二个字符的Unicode码
+//        0-9 Unicode码   48-57
+//        a-z Unicode码   97-122
+//        A-Z Unicode码   65-90
+
+//        用这些可以进行判断  根据获取Unicode码的位置进行判断
+        alert(fn_DetectNum('12sss697465'))
+        function fn_DetectNum(str) {
+            var notNum = [];
+            for (var i = 0;i<str.length;i++){
+                if (str.charCodeAt(i)<48||str.charCodeAt(i)>57){
+                    notNum.push(str.charAt(i));
+                }
+            }
+            return notNum.length === 0 || notNum;
+        }
+        console.log(String.fromCharCode(35838))
+        //在Unicode码找到编号为335838的字符
+//        获取到Unicode码找到编号为335838的字符
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var json = {
+            'name': function () {
+                console.log(1)
+            },
+            'age':18,
+//        json键最好用字符串
+            '52':15
+        };
+
+        json.name()
+        console.log(json['age'])  //利用[]访问json的时候里面需要用'age'字符串才行
+        console.log(json.age)  //利用.访问json的时候直接用名字
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

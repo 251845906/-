@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            display: inline-block;
+            width: 30px;
+            height:30px;
+            background: #f00000;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 500px;border:1px solid #000;height: 300px">
+    </div>
+    <input type="text">
+    <button>提交</button>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oBtn = document.getElementsByTagName('button')[0];
+        var oIpt = document.getElementsByTagName('input')[0];
+        var ColorArr = ['red','blue','green','black'];
+        oBtn.addEventListener('click',function () {
+            var IptVal = oIpt.value.split('');
+            var str = [];
+            for (var i = 0;i<IptVal.length;i++){
+                str[i] = '<span style="background:' + ColorArr[i%ColorArr.length] + '">' + IptVal[i] +'</span>'
+            }
+            oDiv.innerHTML += str.join('');
+            oIpt.value = '';
+        })
+
+    </script>
+</body>
+</html>
