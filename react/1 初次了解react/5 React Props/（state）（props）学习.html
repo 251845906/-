@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+
+<div id="props"></div>
+<!--<div id="state"></div>-->
+<script type="text/babel">
+    var PropsEle = React.createClass({
+        render:function () {
+            return (<h1>{this.props.name}</h1>)
+        }
+    });
+    var StateEle = React.createClass({
+        render:function () {
+            return (<a href={this.props.site}>{this.props.site}</a>)
+        }
+    });
+    var GroupElement = React.createClass({
+        getInitialState:function () {
+            return {
+                name:'这是name',
+                site:'这 是start'
+            }
+        },
+        render:function () {
+            return  (<div>
+                        <StateEle site={this.state.site}/>
+                        <PropsEle name={this.state.name}/>
+                    </div>)
+        }
+    });
+    ReactDOM.render(
+            <GroupElement/>,
+            document.getElementById('props')
+   );
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="a"></div>
+<script type="text/babel">
+     var Component1 = React.createClass({
+        shouldComponentUpdate: function(nextProps, nextState){
+            console.log( this.state, nextState );
+            this.forceUpdate(function(){
+                console.log('强制渲染完成')
+            });
+            //如果return为true则强制渲染这个组件  如果为false则不渲染
+            return true;
+        },
+        componentDidUpdate: function(){
+//            防止页面过渡刷新
+            console.log('componentDidUpdate')
+        },
+        getInitialState: function() {
+            return {
+                isClick: true
+            }
+        },
+        clickCb: function() {
+            this.setState({
+                isClick : !this.state.isClick
+            })
+        },
+        render: function() {
+            return (<div onClick={this.clickCb}>
+            isClick:{this.state.isClick ? 'yes' : 'nope'}
+            </div>)
+        }
+    });
+    var div = document.getElementById('a');
+    ReactDOM.render(
+        <Component1 />, div
+    );
+</script>
+</body>
+</html>

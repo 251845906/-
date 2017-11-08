@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var NameElement = React.createClass({
+        render:function () {
+            return <h1>{this.props.name}</h1>
+        }
+    })
+    var LinkElement = React.createClass({
+        render:function () {
+            return <h2>{this.props.link}</h2>
+        }
+    })
+    var SpliceElenmet = React.createClass({
+        render:function () {
+            return <div>
+                        <NameElement name="这是第一个组件"/>
+                        <LinkElement link="这是第二个组件"/>
+                        <p>{this.props.name}</p>
+                    </div>
+        }
+    })
+    ReactDOM.render(
+        <SpliceElenmet name="这就是复合的组件"/>,
+        document.getElementById('example')
+    )
+</script>
+</body>
+</html>

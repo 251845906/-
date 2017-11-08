@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script >
+        var a;
+        function aaa(callback) {
+            var b = 5;
+            return callback(b)
+        };
+        function calback(b) {
+            a = b
+            return a
+        }
+        var c = aaa(calback);
+        console.log(c)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

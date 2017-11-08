@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+//        Math.floor()  向下取整
+//        Math.ceil()  向上取整
+//        Math.round()  四舍五入
+//        parseInt()舍弃小数部分
+
+
+        var ranDom = Math.random();
+//        创建一个随机数
+
+        console.log(Math.round(ranDom))
+//        四舍五入 一个随机数   0 或 1
+
+        var ranDom1 = Math.random();
+        console.log(Math.round(ranDom1*10))
+//        一个0-10之间的随机数
+
+        var ranDom2 = Math.random();
+        console.log(Math.round(ranDom2*5+5))
+//        5-10之间的数字
+
+        var ranDom3 = Math.random();
+        console.log(Math.round(ranDom3*10+10))
+//        10-20之间的数字
+
+        var ranDom3 = Math.random();
+        console.log(Math.round(ranDom3*80+20))
+//        20-100之间的数字
+
+function randow(x,y) {
+    if (x<y){
+        var max = y;
+        var min = x;
+    }else{
+        var max = x;
+        var min = y;
+    };
+    console.log(max,min)
+    return Math.round(Math.random()*(max-min)+min)
+}
+
+console.log (randow(10,11))
+    </script>
+</head>
+<body>
+
+</body>
+</html>

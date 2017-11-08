@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var myStyle = {
+        fontSize:30
+    };
+    var TextContent = React.createClass({
+        getInitialState:function () {
+            return {start: true}
+        },
+            /* 设定一个属性 也就是state*/
+        handleClick: function(event) {
+            this.setState({start: !this.state.start});
+        },
+             /* 设定一个属性 也就是state 的状态*/
+        render: function() {
+            var text = this.state.start ? '现在的':'原来的';
+
+            return (
+                    <p  onClick={this.handleClick} style={myStyle}>
+                        /* 添加点击事件  点击时候运行handleClick */
+                        你<b>{text}</b>我。点我切换状态。
+                    </p>
+            );
+        }
+    })
+    ReactDOM.render(
+            <TextContent />,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>

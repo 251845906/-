@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var domArr = [
+            <h1>react里面的html元素是用数组形式表现的</h1>,
+            <h1>在里面表示的时候用'[]'表示</h1>,
+            <h1>script记得加上type=“text/babel”</h1>
+        ]
+        ReactDOM.render(
+            <div>{domArr}</div>,
+            document.getElementById('example')
+        )
+    </script>
+    <div id="example1"></div>
+    <script type="text/babel">
+        var myDivElement =  <h1>这是example1</h1>;
+        ReactDOM.render(myDivElement,document.getElementById('example1'))
+    </script>
+</body>
+</html>

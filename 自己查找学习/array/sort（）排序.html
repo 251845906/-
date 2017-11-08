@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+//        排序方法   有很多
+//        快速
+//        希尔
+
+
+        var arr = ['b','t','a','f']
+        console.log(arr)
+        arr.sort()
+//        按照字符编码的顺序进行排列
+        console.log(arr)
+
+//        sort详解
+
+
+
+
+
+
+        var numArr = [5,8,1.6,58,842,6.14,6,4,1,7,6,2,8,5]
+//        var sortArr = [];
+//        var numBer;
+//        for (var i = 0;i<numArr.length;i++){
+//            for (var i = 0;i<numArr.length;i++){
+//
+//            }
+//        }
+
+        numArr.sort(function (a,b) {
+//        sort a，b取数组里面的两个数字 如果a-b则从小到大，b-a从大到小
+
+//        sort()里面参数是函数
+//        就是这么用....... 我也不知道怎说
+            return b-a
+        })
+        console.log(numArr)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

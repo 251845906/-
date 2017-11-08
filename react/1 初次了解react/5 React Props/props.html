@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var Example = React.createClass({
+        getInitialState:function () {
+            return {start:true}
+        },
+        fn_onclick:function (event) {
+            this.setState({start:!this.state.start})
+        },
+        render:function () {
+            var text = this.state.start? "真" : "假";
+            return <h1 onClick={this.fn_onclick}>
+                    这是state{text}<br />
+                    state 和 props 主要的区别在于 props 是不可变的，
+                    而 state 可以根据与用户交互来改变。{this.props.name}
+                    </h1>
+        }
+    });
+    ReactDOM.render(
+        <Example name="这是内容props"/>,
+        document.getElementById('example')
+    )
+</script>
+</body>
+</html>

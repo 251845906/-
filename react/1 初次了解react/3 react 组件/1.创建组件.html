@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var Component = React.createClass({
+            render:function () {
+                return <div>
+                            <p>这是我初次接触react组件功能,</p>
+                            <strong style={{color:"red",background:'#564'}}>
+                                注意，原生 HTML 元素名以小写字母开头，
+                                而自定义的 React 类名以大写字母开头，
+                                比如 HelloMessage 不能写成 helloMessage。
+                                除此之外还需要注意组件类只能包含一个顶层标签，
+                                否则也会报错。
+                            </strong>
+                        </div>;
+            }
+        });
+//        使用组件的时候  把组件当做标签来使用
+        ReactDOM.render(<Component />,document.getElementById('example'))
+    </script>
+</body>
+</html>

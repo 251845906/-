@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+                <h1>{Math.round(Math.random()*10)}使用"{}"可以直接进行数学运算'{}'也可以用js方法</h1>
+                <strong>{5 == 5? console.log(true):console.log(false)}不能使用if else 但可以使用 conditional (三元运算) 表达式来替代。</strong>
+            </div>,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

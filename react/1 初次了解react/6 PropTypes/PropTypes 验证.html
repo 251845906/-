@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var Propsva = React.createClass({
+        propTypes: {
+            optionalArray: React.PropTypes.array,
+            optionalBool: React.PropTypes.bool,
+            optionalFunc: React.PropTypes.func,
+            optionalNumber: React.PropTypes.number,
+            optionalObject: React.PropTypes.object,
+            optionalString: React.PropTypes.string,
+        },
+        getDefaultProps:function(){
+            return {
+                optionalArray: 'onmpw.com',
+                optionalBool: true,
+                optionalFunc: function (arg) {
+                    console.log(arg);
+                },
+                optionalNumber: 3,
+                optionalObject: {
+                    object1: "objectvalue1",
+                    object2: "objectvalue2",
+                    object3: "objectvalue3",
+                },
+                optionalString: "My Onmpw",
+            };
+        },
+        render:function(){
+            console.log(typeof this.props.optionalArray)
+            console.log(typeof this.props.optionalBool)
+            console.log(typeof this.props.optionalNumber)
+            console.log(typeof this.props.optionalString)
+            return (
+                    <div>
+                        <h3>Array:{this.props.optionalArray}</h3>
+                        <h3>Bool:{this.props.optionalBool}</h3>
+                        <h3 onClick={this.props.optionalFunc}>Func:click</h3>
+                        <h3>Number:{this.props.optionalNumber}</h3>
+                        <h3>Object:{this.props.optionalObject.object1}</h3>
+                        <h3>Object:{this.props.optionalObject.object2}</h3>
+                        <h3>Object:{this.props.optionalObject.object3}</h3>
+                        <h3>String:{this.props.optionalString}</h3>
+                    </div>
+            );
+        }
+    });
+    ReactDOM.render(
+            <Propsva />,
+        document.getElementById('example')
+    );
+</script>
+
+</body>
+</html>

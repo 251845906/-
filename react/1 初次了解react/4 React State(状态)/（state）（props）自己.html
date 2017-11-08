@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+
+<div id="props"></div>
+<div id="state"></div>
+<script type="text/babel">
+    var PropsEle = React.createClass({
+        render:function () {
+            return <h1>这是{this.props.name}</h1>
+        }
+    });
+    var StateEle = React.createClass({
+        getInitialState:function () {
+            return {start:true}
+        },
+        fn_state:function () {
+            this.setState({start:!this.state.start})
+        },
+        render:function () {
+            var text = this.state.start ? "1":"3";
+            return (<h1 onClick={this.fn_state}>这是{text}</h1>)
+        }
+    });
+    ReactDOM.render(
+            <StateEle />,
+        document.getElementById('state')
+    );
+    ReactDOM.render(
+            <PropsEle name="props "/>,
+            document.getElementById('props')
+   );
+
+</script>
+</body>
+</html>

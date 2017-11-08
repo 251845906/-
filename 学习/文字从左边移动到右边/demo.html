@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 800px;
+            height: 230px;
+            border:10px solid #c0c0c0;
+            padding: 20px;
+            margin: 200px auto;
+        }
+        .box div{
+            float: left;
+        }
+        textarea{
+            resize: none;
+            width: 323px;
+            height: 222px;
+            background: #efefd6;
+            border:1px dashed #392939;
+        }
+        /*.left{*/
+            /*margin-right: 20px;*/
+        /*}*/
+        /*.right{*/
+            /*margin-left: 20px;*/
+        /*}*/
+        .right p{
+            display: block;
+            width: 323px;
+            height: 222px;
+            border:1px dashed #392939;
+            margin:0;
+            background: #63eff7;
+            overflow-y: scroll;
+        }
+        .contant{
+            width: 144px;
+            text-align: center;
+        }
+        .contant button{
+            width:120px;
+            height:40px;
+            background: #f76300;
+
+            color: #fff;
+            border:none;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="left">
+        <textarea name="" id="" ></textarea>
+    </div>
+    <div class="contant">
+        <button>把文字右移</button>
+        <p id="TexLength">0/0</p>
+    </div>
+    <div class="right">
+        <p id="P_import"></p>
+    </div>
+</div>
+<script>
+    const btn = document.getElementsByTagName('button')[0];
+    btn.addEventListener('click',function () {
+        var Text = document.getElementsByTagName('textarea')[0];
+        var TextLength = document.getElementById('TexLength');
+        var Length = Text.value.length;
+        var P_import = document.getElementById('P_import');
+            P_import.innerHTML = '';
+        clearInterval(btn.timer);
+        btn.timer = setInterval(function () {
+            P_import.innerHTML += Text.value.substring(0,1);
+            Text.value = Text.value.substring(1);
+            TextLength.innerHTML = Text.value.length + '/' + Length;
+            Text.value.length === 0 && clearInterval(btn.timer);
+        },50)
+    })
+</script>
+</body>
+</html>
