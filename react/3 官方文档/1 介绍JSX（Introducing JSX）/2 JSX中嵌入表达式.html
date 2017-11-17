@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    function formatName(user) {
+        return user.firstName + ' ' + user.lastName;
+    };
+    const user = {
+        firstName: 'Harper',
+        lastName: 'Perez'
+    };
+    const Element = (<h1>{formatName(user)}</h1>);
+    ReactDOM.render(Element,document.getElementById('example'));
+    
+</script>
+</body>
+</html>

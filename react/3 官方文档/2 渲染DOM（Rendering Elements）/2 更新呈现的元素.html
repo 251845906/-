@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    fn_Date()
+    function fn_Date() {
+        const Element = (<div>
+            <h1>你好!世界!</h1>
+            <h1>现在{new Date().toLocaleTimeString()}</h1>
+        </div>);
+        ReactDOM.render(Element,document.getElementById('example'))
+    }
+    setInterval(fn_Date,1000)
+</script>
+</body>
+</html>

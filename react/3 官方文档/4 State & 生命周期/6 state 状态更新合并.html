@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    class Element extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                posts: [111,222],
+                comments: [111,222]
+            };
+        }
+        componentDidMount(){
+            /*当组件输出到 DOM 后会执行 componentDidMount() 钩子，这是一个建立定时器的好地方：*/
+            fetchPosts().then(response => {
+                this.setState({
+                    posts: response.posts
+                });
+            });
+
+//            fetchComments().then(response => {
+//                this.setState({
+//                    comments: response.comments
+//                });
+//            });
+        }
+        componentWillUnmount(){
+            /*组件出现前  就是dom还没有渲染到html文档里面*/
+        }
+
+        render(){
+            return (<div>
+                <h1>{this.state.posts}{this.state.comments}</h1>
+            </div>)
+        }
+    }
+    ReactDOM.render(<Element/>,document.getElementById('example'))
+</script>
+</body>
+</html>

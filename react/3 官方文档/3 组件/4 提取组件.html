@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+    function Avatar(props) {
+        return (<img
+            className="Avatar"
+            src={props.user.url}
+            alt={props.user.name}
+        />)
+    }
+    function UserInfo(props) {
+        return (
+                <div className="UserInfo">
+                    <Avatar user={props.user} />
+                    <div className="UserInfo-name">
+                        {props.user.name}
+                    </div>
+                </div>
+        );
+    }
+    function Comment(props) {
+        return (
+                <div className="Comment">
+                    <UserInfo user={props.author} />
+                    <div className="Comment-text">
+                        {props.text}
+                    </div>
+                    <div className="Comment-date">
+                        {formatDate(props.date)}
+                    </div>
+                </div>
+        );
+    }
+    function formatDate(a) {
+        return a
+    }
+    ReactDOM.render(<Comment author={{name:"44444",url:"77777"}} text="888888" date="8846489764"/>,document.getElementById('example'))
+</script>
+</body>
+</html>

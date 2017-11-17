@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<div id="example1"></div>
+<div id="example2"></div>
+<script type="text/babel">
+    class Porpselemet extends React.Component{
+        render(){
+            return <h1>这就是{this.props.name}</h1>
+        }
+    };
+    var Porpselemet1 = React.createClass({
+        render:function () {
+            return <h1>这就是{this.props.name}</h1>
+        }
+    });
+    function Porpselemet2(props) {
+        return <h1>这就是{props.name}</h1>
+    }
+    const Element = <Porpselemet2 name="props属性"/>;
+    ReactDOM.render(<Porpselemet name="props属性"/>,document.getElementById('example'));
+    ReactDOM.render(<Porpselemet1 name="props属性"/>,document.getElementById('example1'));
+    ReactDOM.render(Element,document.getElementById('example2'));
+</script>
+</body>
+</html>

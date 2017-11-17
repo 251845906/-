@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    const element = <h1>这个有趣的标签语法既不是一个字符串也不是HTML。
+                            它被称为JSX，它是JavaScript的语法扩展。我
+                        们建议在React中使用它来描述UI的外观。JSX可能会
+                        提醒你一个模板语言，但它具有JavaScript的全部功能。
+                    </h1>;
+    ReactDOM.render(element,document.getElementById('example'))
+
+</script>
+</body>
+</html>

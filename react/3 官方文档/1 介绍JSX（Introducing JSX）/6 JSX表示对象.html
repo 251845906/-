@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example1"></div>
+<div id="example2"></div>
+<div id="example"></div>
+<h2>Babel将JSX编译为React.createElement()调用。</h2>
+<script type="text/babel">
+//    这两个例子是相同的：
+    const element = (
+            <h1 className="greeting">
+                Hello, world!
+            </h1>
+    );
+//    这两个例子是相同的：
+    const element1 = React.createElement(
+        'h1',
+        {className: 'greeting'},
+        'Hello, world!'
+    );
+
+    ReactDOM.render(element,document.getElementById('example'))
+    ReactDOM.render(element1,document.getElementById('example1'))
+</script>
+</body>
+</html>
