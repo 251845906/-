@@ -14,22 +14,29 @@
     class Element extends React.Component{
         constructor(props){
             super(props);
-            this.fn_click = this.fn_click.bind(this)
+            this.fn_click = this.fn_click.bind(this);
             this.state = {start:true};
         }
         fn_click(e){
-            this.setState((proState) = ({
-                start = ! proState.start
+            this.setState(proState => ({
+                start : ! proState.start
             }))
         }
         render(){
-            var star = this.state.start;
-
-            return star? (<div><button>点击</button><p>这是真的</p></div>):(<div><button>点击</button><p>这是假的</p></div>)
+            var Dom;
+            if (this.state.start){
+                 Dom = <p>{'这是真的'}</p>;
+            }else{
+                 Dom = <p>{'这是假的'}</p>;
+            }
+            return  (<div>
+                <button onClick={this.fn_click}>点击</button>
+                {Dom}
+            </div>)
         }
     }
 
-    ReactDOM.render(<Element/>,docuemnt.getElementById('example'))
+    ReactDOM.render(<Element/>,document.getElementById('example'))
 </script>
 </body>
 </html>
