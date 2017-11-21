@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<p>在React中，textarea会用value属性来代替。这样的话，表单中的textarea非常类似于使用单行输入的表单：</p>
+<div id="example"></div>
+<script type="text/babel">
+    class FormElment extends React.Component{
+        constructor(props){
+            super(props);
+            this.state ={textValue:'',name:'',passWord:''}
+            this.nameChange = this.nameChange.bind(this);
+            this.passwordChange = this.passwordChange.bind(this);
+            this.textChange = this.textChange.bind(this);
+            this.formSubmit = this.formSubmit.bind(this);
+        }
+        textChange(e){
+            this.setState({textValue:e.target.value})
+        }
+
+        passwordChange(e){
+            this.setState({passWord:e.target.value})
+        }
+        nameChange(e){
+            this.setState({name:e.target.value})
+        }
+        formSubmit(e){
+            e.preventDefault()
+            console.log(this.state);
+        }
+        render(){
+            return (<form action="" onSubmit={this.formSubmit}>
+                        <label>
+                            name: <input type="text" onChange={this.nameChange}/><br/>
+                            passWord: <input type="password" onChange={this.passwordChange}/><br/>
+                            <textarea name="" id="" cols="30" rows="10" onChange={this.textChange}/><br/>
+                        </label>
+                        <input type="submit" value="submit"/>
+                    </form>)
+        }
+    }
+    ReactDOM.render(<FormElment/>,document.getElementById('example'))
+</script>
+</body>
+</html>

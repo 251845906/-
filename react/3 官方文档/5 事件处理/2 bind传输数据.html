@@ -31,21 +31,20 @@
         }
     }
     class Element1 extends React.Component{
-        preventPop(e){    //事件对象e要放在最后
-            e.preventDefault();
+        preventPop(state,e){    //事件对象e要放在最后
             alert(this.state.name);
-            alert(this.state.text);
+            e.preventDefault();
         }
         render(){
             return (<div>
                 <p>hello</p>
                 {/* Pass params via bind() method. */}
-                <a href="#" onClick={this.preventPop.bind(this,this.state={name:555,text:666})}>Click</a>
+                <a href="#" onClick={this.preventPop.bind(this,this.state = {name:55})}>Click</a>
             </div>)
         }
     }
     ReactDOM.render(<Element/>,document.getElementById('example'))
-    ReactDOM.render(<Element/>,document.getElementById('example1'))
+    ReactDOM.render(<Element1/>,document.getElementById('example1'))
 </script>
 </body>
 </html>
