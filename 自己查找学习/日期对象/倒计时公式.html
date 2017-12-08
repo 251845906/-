@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="https://www.nowapi.com/style/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
 </body>
@@ -10,6 +11,67 @@
 //倒计时就是一个目标时间  一个获取现在时间
 
 //然后用公式
+//        $.ajax({
+//            type          : 'get',
+//            async         : false,
+//            url           : 'http://api.k780.com/?app=life.time&appkey=30369&sign=ca8d57e0e6aafe5f7d67b8b20bd5ee09&format=json&jsoncallback=data',
+//            dataType      : 'jsonp',
+//            jsonp         : 'callback',
+//            jsonpCallback : 'data',
+//            success       : function(data){
+//                console.log(data)
+////                if(data.success!='1'){
+////                    alert(data.msgid+' '+data.msg);
+////                    exit;
+////                }
+////                //遍历
+////                var description = "";
+////                for(var i in data.result){
+////                    var property=data.result[i];
+////                    description+=i+" = "+property+"\n";
+////                }
+//
+//            },
+//            error:function(){
+////                alert('fail');
+//            }
+//        });
+//        var request = new XMLHttpRequest();
+//        // 新建xnlhttp
+//        request.open('GET','http://api.k780.com/?app=life.time&appkey=30369&sign=ca8d57e0e6aafe5f7d67b8b20bd5ee09&format=json&jsoncallback=data',true);
+//        // 发送请求   get模式   发送地址   异步同步
+////        request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//        // 请求头
+//        request.send(null)
+//        // 发送的数据
+//        request.onreadystatechange = function(data){
+//            // 每当 readyState 改变时，就会触发 onreadystatechange 事件。
+//            console.log(request)
+//            switch(request.readyState) {
+//                case 0:
+//                    alert('请求未初始化')
+//                    break;
+//                case 1:
+//                    alert('服务器连接已建立')
+//                    break;
+//                case 2:
+//                    alert('请求已接收')
+//                    break;
+//                case 3:
+//                    alert('请求处理中')
+//                    break;
+//                case 4:
+//                    switch(request.status){
+//                        case 200:
+//                            alert(request.responseText)
+//                            break;
+//                        case 404:
+//                            alert('未找到页面')
+//                            break;
+//                    }
+//                    break;
+//            }
+//        }
 
 
     function fn_countTimer() {
@@ -41,7 +103,8 @@
 
 
 
-    setInterval(function () {
+    var timer = setInterval(function () {
+        clearInterval(timer)
         document.body.innerHTML = fn_countTimer();
     },1000)
 </script>

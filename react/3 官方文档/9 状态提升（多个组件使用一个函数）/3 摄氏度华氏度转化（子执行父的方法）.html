@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<p>使用 react 经常会遇到几个组件需要共用状态数据的情况。这种情况下，我们最好将这部分共享的状态提升至他们最近的父组件当中进行管理。我们来看一下具体如何操作吧</p>
+<div id="example"></div>
+<script type="text/babel">
+    const scaleNames = {
+        c: '摄氏度',
+        f: '华氏度'
+    };
+    function toCelsius(fahrenheit) {
+        return (fahrenheit - 32) * 5 / 9;
+    }
+
+    function toFahrenheit(celsius) {
+        return (celsius * 9 / 5) + 32;
+    }
+    function tryConvert(temperature, convert) {
+        const input = parseFloat(temperature);
+        if (Number.isNaN(input)) {
+            return '';
+        }
+        const output = convert(input);
+        const rounded = Math.round(output * 1000) / 1000;
+        return rounded.toString();
+    }
+    class TemperatureInput extends React.Component{
+        constructor(props){
+            super(props);
+            this.headleChange = this.headleChange.bind(this);
+//            this.state = {temperature:''};
+        }
+        headleChange(e){
+            e.preventDefault();
+//            this.setState({temperature:e.target.value})
+            this.props.onTemperatureChange(e.target.value);
+            //            子组件运行父组件的方法
+            //            重点也就是骚操作
+            //            props.onTemperatureChange 传到子组件的是一个函数 函数在父组件中是改变setate的属性
+        }
+        render(){
+//            const temperature = this.state.temperature;
+            const temperature = this.props.temperature;
+            const scale = this.props.scale;
+            return (
+                    <fieldset>
+                        <legend>输入温度 {scaleNames[scale]}</legend>
+                        <input type="text" value={temperature} onChange={this.headleChange}/>
+                    </fieldset>
+            )
+        }
+    }
+    class Calculator extends React.Component {
+        constructor(props) {
+            super(props);
+            this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+            this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
+            this.state = {scale: 'c',temperature: ''};
+        }
+        handleCelsiusChange(temperature) {
+            this.setState({scale: 'c', temperature});
+        }
+        handleFahrenheitChange(temperature) {
+            this.setState({scale: 'f', temperature});
+        }
+        render() {
+            const scale = this.state.scale;
+            const temperature = this.state.temperature;
+            const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+                            //判断scale是否是f  传入temperature
+            const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+
+
+            return (
+                    <div>
+                        <TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange} />
+                        <TemperatureInput scale="f" temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange} />
+                        <BoilingVerdict celsius={parseFloat(celsius)} />
+                    </div>
+            );
+        }
+    }
+
+    function BoilingVerdict(props) {
+        if (props.celsius >= 100) {
+            return <p>水会烧开</p>;
+        }
+        return <p>水不会烧开</p>;
+    }
+    ReactDOM.render(<Calculator />,document.getElementById('example'));
+</script>
+</body>
+</html>

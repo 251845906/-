@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<p>使用 react 经常会遇到几个组件需要共用状态数据的情况。这种情况下，我们最好将这部分共享的状态提升至他们最近的父组件当中进行管理。我们来看一下具体如何操作吧</p>
+
+<h1>  这个结构有点麻烦  主要点为</h1>
+<h2>1: state状态的判断和两个值的转换  看state 的单位执行转换单位</h2>
+<h2>2: 子组件执行父组件的函数</h2>
+<div id="example"></div>
+<script type="text/babel">
+    const scaleNames = {
+        c: '摄氏度',
+        f: '华氏度'
+    };
+    function toCelsius(fahrenheit) {
+        return (fahrenheit - 32) * 5 / 9;
+    }
+
+    function toFahrenheit(celsius) {
+        return (celsius * 9 / 5) + 32;
+    }
+    function tryConvert(temperature, convert) {
+        const input = parseFloat(temperature);
+        if (Number.isNaN(input)) {
+            return '';
+        }
+        const output = convert(input);
+        const rounded = Math.round(output * 1000) / 1000;
+        return rounded.toString();
+    }
+    class ParentElement extends React.Component{
+        constructor(props){
+            super(props);
+            this.handlChildChange0 = this.handlChildChange0.bind(this);
+            this.handlChildChange1 = this.handlChildChange1.bind(this);
+            this.state = {
+                unit:'c',
+                number:''
+            }
+        }
+        handlChildChange0(num,event){
+            this.setState({
+                unit:'c',
+                number:num
+            })
+        }
+        handlChildChange1(num){
+            this.setState({
+                unit:'f',
+                number:num
+            })
+        }
+        render(){
+            const unit = this.state.unit;
+            const number = this.state.number;
+            const celsius = unit === 'f' ? tryConvert(number, toCelsius) : number;
+
+            //判断当前值是number是摄氏度还是华氏度  如果是华氏度则转换为摄氏度  如是摄氏度则不变
+
+            const fahrenheit = unit === 'c' ? tryConvert(number, toFahrenheit) : number;
+            //判断当前值是number是华氏度还是摄氏度  如果是摄氏度则转换为华氏度   如是华氏度则不变
+            return (
+                <div>
+                    <ChildElement1 unit='c' onChildChange={this.handlChildChange0} num={celsius}/>
+                    <ChildElement1 unit='f' onChildChange={this.handlChildChange1} num={fahrenheit}/>
+                    <ChildElement2 num = {celsius}/>
+                </div>
+            )
+        }
+    }
+    class ChildElement1 extends React.Component{
+        constructor(props){
+            super(props);
+            this.headlChange = this.headlChange.bind(this);
+        }
+        headlChange(event){
+            event.preventDefault();
+            this.props.onChildChange(event.target.value)
+        }
+        render(){
+            var unit = this.props.unit;
+            return(
+                <fieldset>
+                    <legend>这是{scaleNames[unit]}</legend>
+                    <input type="text" onChange={this.headlChange} value={this.props.num}/>
+                </fieldset>
+            )
+        }
+    }
+    const ChildElement2 =(props)=>{
+        return (<p>{props.num >= 100?'水开了':'水没开'}</p>)
+    }
+    ReactDOM.render(<ParentElement />,document.getElementById('example'));
+</script>
+</body>
+</html>

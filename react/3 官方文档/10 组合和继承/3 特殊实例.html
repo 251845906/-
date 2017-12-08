@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    function FancyBorder(props) {
+        return (
+            <div className={'FancyBorder FancyBorder-' + props.color}>
+                {props.children}
+            </div>
+        )
+    }
+    function Dialog(props){
+        return (
+            <FancyBorder color={'blue'}>
+                <h1 className="Dialog-tittle">
+                    {props.tittle}
+                </h1>
+                <p className="Dialog-message">
+                    {props.message}
+                </p>
+                {props.children}
+            </FancyBorder>
+        )
+    }
+    class Element extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                login:''
+            };
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSignUp = this.handleSignUp.bind(this);
+        }
+        render(){
+            return(
+                    <Dialog tittle={'Welcome'} message={'Thank you for visiting our spacecraft!'}>
+                        <input value={this.state.login} onChange={this.handleChange} />
+                        <button onClick={this.handleSignUp}>Sign Me Up!</button>
+                    </Dialog>
+            )
+        }
+        handleChange(e) {
+            this.setState({login: e.target.value});
+        }
+
+        handleSignUp() {
+            alert(`Welcome aboard, ${this.state.login}!`);
+        }
+    }
+    ReactDOM.render(<Element />,document.getElementById('example'));
+</script>
+</body>
+</html>

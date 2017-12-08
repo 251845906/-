@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function fn_gz(a,b,n) {
+            this.a = a;
+            this.b = b;
+            this.n = n;
+            this.sayName = function() { alert(this.name) }
+        }
+        var person1 = new fn_gz('Zaxlct', 28, 'Software Engineer');
+        var person2 = new fn_gz('Mick', 23, 'Doctor');
+        console.log(person1)
+//        我们要记住两个概念（构造函数，实例）：
+//        person1 和 person2 都是 构造函数 Person 的实例 **
+//        一个公式：
+//        实例的构造函数属性（constructor）指向构造函数。
+    </script>
+</head>
+<body>
+<a href="http://www.jianshu.com/p/dee9f8b14771">最详尽的 JS 原型与原型链终极详解，没有「可能是」。</a>
+</body>
+</html>

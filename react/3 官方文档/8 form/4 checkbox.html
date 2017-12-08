@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
 </head>
 <body>
+<div id="example"></div>
+<script type="text/babel">
+    class Element extends React.Component{
+        constructor(props){
+            super(props);
+            this.handleInputChange =this.handleInputChange.bind(this)
+            this.state = {
+                isGoing: true,
+                numberOfGuests: 0
+            }
+        }
+        handleInputChange(event){
+            const target = event.target;
+            console.log(target)
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
 
+            this.setState({
+                [name]: value
+            });
+            console.log(this.state[name])
+//            []相当于.  []里面可以写变量
+        }
+        render(){
+            return (
+                <form action="">
+                    <label>
+                        Is going
+                        <input type="checkbox" name="isGoing" checked={this.state.isGoing} onChange = {this.handleInputChange}/>
+                        <p></p>
+                    </label><br/>
+                    <label>
+                        Number of guests:
+                        <input name="numberOfGuests" type="number" value={this.state.numberOfGuests} onChange={this.handleInputChange} />
+                    </label>
+                </form>
+            )
+        }
+    }
+    ReactDOM.render(<Element/>,document.getElementById('example'))
+</script>
 </body>
 </html>

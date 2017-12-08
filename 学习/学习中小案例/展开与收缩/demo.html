@@ -25,7 +25,8 @@
 
 			for(var i = 0;i<oH2.length;i++){
 				oH2[i].index = i;
-				oH2[i].addEventListener('click',function(){
+				oH2[i].addEventListener('click',function(e){
+				    console.log(e)
 					console.log(this.index)
 					if(this.className =='active'){
 						this.className = '';

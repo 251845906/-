@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="id"></div>
+<script>
+    //    注：  1.  new 就是调用原型对象
+//             2.  this 指向的是调用的那个
+
+
+//    函数的原型对象constructor默认指向函数本身，原型对象除了有原型属性外，为了实现继承，还有一个原型链指针__proto__，该指针指向上一层的原型对象，而上一层的原型对象的结构依然类似，这样利用__proto__一直指向Object的原型对象上，而Object的原型对象用Object.prototype.__proto__ = null表示原型链的最顶端，如此变形成了javascript的原型链继承，同时也解释了为什么所有的javascript对象都具有Object的基本方法。
+//作者：Pursue
+//    链接：http://www.jianshu.com/p/aa1ebfdad661/
+
+
+
+//==============================
+//    以下忽略
+//function a() {
+//    this.name = 'aa';
+//}
+//function b() {
+//    this.name = 'bb';
+//}
+//b.prototype = new a();
+//a.prototype = new b();
+//var c = b.prototype = new a();
+//var d = a.prototype = new b();
+//console.log(new b().name);
+//console.log(new a().name);
+//console.log(c.name);
+//console.log(d.name);
+
+
+//    function Preson() {
+//        this.name = 'name';
+//    }
+//    var a = new Preson()
+//    Preson.prototype.age = 1;
+//    console.log(a)
+//
+//    //    ===============================================
+//    function Preson1() {
+//        this.age = 1;
+//    }
+//    Preson1.prototype = new Preson();
+//
+//    console.log(new Preson1())
+
+    //        ==============================================
+//    function Dom(name,age,sex){
+//        this.name = name;
+//        this.age = age;
+//        this.sex = sex;
+//        Dom.prototype.timer = function () {
+//            if(this.age>20){
+//                console.log('你老了')
+//            }
+//        }
+//    }
+//    var example1 = new Dom('sb1',22,'男');
+//    var example2 = new Dom('sb2',55,'男');
+//    var example3 = new Dom('sb3',66,'男');
+
+
+    //
+    //        var person1 = new Person();
+    ////        person1.sayName(); // 'Zaxlct'
+    //
+    //        var person2 = new Person();
+    ////        person2.sayName(); // 'Zaxlct'
+    //
+    //        console.log(person1); //true
+    //        每个对象都有 __proto__ 属性，但只有函数对象才有 prototype 属性
+    //        那什么是原型对象呢？
+    //我们把上面的例子改一改你就会明白了：
+    //        var a = Person.prototype.constructor
+    //        var a = Person.prototype = {
+    //            constructor:Person,
+    //            name:  'Zaxlct',
+    //            age: 28,
+    //            job: 'Software Engineer',
+    //            sayName: function() {
+    //                alert(this.name);
+    //            }
+    //        }
+    //        console.log(a)
+</script>
+<a href="http://upload-images.jianshu.io/upload_images/574093-c03529e3f0943633.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/570">图片解</a>
+</body>
+</html>
