@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="id"></div>
+<script>
+    function a(){
+        this.a = 'a';
+    }
+    a.prototype = new b();   // new 一定要在 prototype之前
+    a.prototype.container0 = function () {
+        return this.a
+    };
+    function b(){
+        this.b = 'b';
+    }
+    b.prototype.container1 = function (){
+        return this.b
+    };
+    const c = new a();
+
+
+    console.log(c.container0())
+    console.log(c.container1())
+
+
+</script>
+<a href="http://upload-images.jianshu.io/upload_images/574093-c03529e3f0943633.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/570">图片解</a>
+</body>
+</html>

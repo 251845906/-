@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function $() {
+           this.prototype = {
+               a:function (a) {
+                   console.log(a)
+               },
+               b:function (a) {
+                   console.log(a)
+               },
+               c:function (a) {
+                   console.log(a)
+               }
+           }
+        };
+        const id  = new $();  /*这时候变成一个对象？??*/  /*id.__proto__ ===$.prototype  true*/
+//        id.prototype.constructor.prototype.a('sss')
+//        console.log(id)
+        console.log($.prototype);       /*{constructor: ƒ}*/
+        console.log($.constructor);
+        console.log($.__proto__ );
+        console.log(id.prototype);    /*{a: ƒ, b: ƒ, c: ƒ}*/
+        console.log(id.constructor);
+        console.log(id.__proto__ );
+    </script>
+</head>
+<body>
+<pre>
+    <code>
+        Function.prototype = {
+            constructor : Function,
+            __proto__ : parent prototype,
+            some prototype properties: ...
+        };
+    </code>
+</pre>
+<pre>
+    <h2>
+        1 函数的原型对象constructor默认指向函数本身，
+        2 函数的__proto__指向上一次的原型对象，
+        3 上一层的原型对象的结构依然类似，利用__proto__一直指向Object的原型对象上
+        4 Object的原型对象用Object.prototype.__proto__ = null表示原型链的最顶端
+    </h2>
+</pre>
+
+</body>
+</html>

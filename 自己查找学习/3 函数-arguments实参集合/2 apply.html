@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h1>apply:方法能劫持另外一个对象的方法，继承另外一个对象的属性.</h1>
+<p>Function.apply(obj,args)方法能接收两个参数</p>
+<p>obj：这个对象将代替Function类里this对象</p>
+<p>args：这个是数组，它将作为参数传给Function（args-->arguments</p>
+<script>
+    function a(name,age){
+        this.name = name;
+        this.age = age
+    };
+    function b (name,age,grade){
+        a.apply(this,arguments);
+        this.grade = grade;
+
+    };
+
+    const student = new b("qian",21,"一年级");
+//    创建一个对象student
+    console.log(student)
+</script>
+</body>
+</html>
