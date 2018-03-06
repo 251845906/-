@@ -77,13 +77,13 @@
                     ct = obj.content;
                 var tf = document.getElementById(id);
                 if(tf === null || tf === void 0) {
-                    throw new Error('璇锋鏌d鏄惁閿欒');
+                    throw new Error('');
                 }
                 if(typeof fs !== 'string') {
                     fs = fs.toString();
                 }
                 if(!/^\d{2}(|px)$/.test(fs)) {
-                    throw new Error('璇锋鏌ontSize鏍煎紡鏄惁閿欒');
+                    throw new Error('');
                 } else {
                     fs = fs.match(/^\d{2}/)[0];
                 }
