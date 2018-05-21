@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+
+//        配合  https://www.jianshu.com/p/470d7f19b000  看更明确
+//        1  每个构造函数都有一个prototype属性  这个属性指向一个对象 这个对象，也就是原型对象包含了共享的属性和方法
+//        2  原型对象的属性和方法又一个constructor属性   这个constructor指向的是一个构造函数
+//        3  对的  constructor 和 prototype 是互相指向的
+
+        function animal(){}
+        animal.prototype.name = "Tom"
+        animal.prototype.say = function(){
+            alert('喵喵喵？')
+        }
+        console.log(animal.prototype)
+        console.log(animal.constructor)
+        let obj = new animal();
+        console.log(obj.__proto__)
+//        obj的__proto__与函数的prototype是相等的
+
+//==================================================================================================
+        function Person(name,age,job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.sayName = function (name) {
+                alert(name)
+            }
+        }
+//        上下一个结果  下面明确点
+//        Person.prototype = {
+//            constructor:Person,
+//            sayName:function (name) {
+//                alert(name)
+//            }
+//        };
+        let person1 = new Person("Nicholas",29,"Software");
+        let person2 = new Person("Greg",27,"Doctor");
+        person1.sayName('name1')
+        person2.sayName('name2')
+
+//        ===================================================================
+//        继承
+        function superType() {
+            this.color = ['red','blue','yellow']
+        }
+        function subType() {}
+
+        subType.prototype = new superType()
+
+        let obj1 = new subType();
+
+        console.log(obj1.color)
+
+
+//        window.__proto__  相当于 function window(){}
+//          我们并未定义window函数   现在的window是一个object
+//          window.__proto__.Zdy   相当于  window.prototype = {}   相当于 function window(){}
+
+
+
+
+
+        window.__proto__.Zdy = function (name) {
+            console.log(name)
+        }
+        window.Zdy(555)
+
+
+        console.log(window.__proto__.__proto__.__proto__.__proto__)
+//        顶级对象就是     object
+
+        Object.prototype.zdy = function (a) {
+            console.log(a)
+        };
+        Object.__proto__.sdd = function (a) {
+            console.log(a)
+        };
+        window.zdy(98)
+        console.log(Object.__proto__)
+        console.log(Object.prototype)
+
+
+        console.log(window.__proto__)
+        console.log(window.prototype)
+//        可怕的js
+    </script>
+</head>
+<body>
+
+<h1>总结： fn.prototype.consturctor = fn(){}</h1>
+<h1>总结： obj.__proto__ = fn.prototype = fn(){}</h1>
+<h1> Object是一个函数也是一个对象</h1>
+
+
+</body>
+</html>
