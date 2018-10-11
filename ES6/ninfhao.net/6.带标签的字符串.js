@@ -4,7 +4,7 @@
 let a = '5555',
     b = '4444';
 
-let d = fun`a\naa${a}ccc${b}`;
+let d = fun`a \n aa${a}ccc${b}`;
 // \n  代表换行
 function fun(string,...values) {
     console.log(string)
