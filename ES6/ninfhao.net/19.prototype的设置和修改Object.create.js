@@ -33,6 +33,5 @@ console.log(Object.getPrototypeOf(obje) == drink);
 
 
 obje.__proto__ = qwink;
-console.log(Object.getPrototypeOf(obje) == obje.__proto__);
-
-// Object.create 只创建了一个__proto__  obje.__proto__添加的是原型链
+// obje.__proto__ 和 Object.create() 相似
+console.log(Object.getPrototypeOf(obje),qwink,qwink.getDrink,Object.getPrototypeOf(obje).getDrink == qwink.getDrink);
